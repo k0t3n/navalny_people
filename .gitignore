@@ -8,3 +8,4 @@
 out
 gen
 .idea/
+db.sqlite3
