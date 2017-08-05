@@ -35,7 +35,12 @@ class Person(models.Model):
         verbose_name='образование'
     )
 
-    donated_money = models.PositiveIntegerField(
+    profession = models.CharField(
+        max_length=40,
+        verbose_name='профессия'
+    )
+
+    donated_money = models.DecimalField(
         default=0,
         verbose_name='пожертвованных средств'
     )
@@ -55,18 +60,3 @@ class Person(models.Model):
 
     def get_full_name(self):
         return '%s %s'.format(self.first_name, self.last_name)
-
-    def is_verified(self):
-        if self.verified:
-            return True
-        else:
-            return False
-
-    def is_moderated(self):
-        if self.moderated:
-            return True
-        else:
-            return False
-
-    class Meta:
-        db_table = 'Person'
