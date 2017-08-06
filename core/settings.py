@@ -29,6 +29,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # Custom apps
+    'suit',
+    # Project_apps
+    'navalny_people',
     # Django apps
     'django.contrib.admin',
     'django.contrib.auth',
@@ -36,8 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Custom apps
-    'navalny_people',
 ]
 
 MIDDLEWARE = [
