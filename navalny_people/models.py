@@ -17,13 +17,16 @@ class Person(models.Model):
         max_length=30,
         verbose_name='фамилия')
 
-
-    city = models.TextField(
+    city = models.CharField(
         max_length=40,
         verbose_name='город'
     )
     # TODO придумать способ для выбора городов (через селекты)
 
+    bio = models.TextField(
+        max_length=10000,
+        verbose_name='биография'
+    )
 
     donated_money = models.DecimalField(
         max_digits=1000000,

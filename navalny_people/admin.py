@@ -7,3 +7,4 @@ class PersonAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Person, PersonAdmin)
+admin.site.site_header = 'Проект Навальный.Люди'
