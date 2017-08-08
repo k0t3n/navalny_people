@@ -17,9 +17,6 @@ class Person(models.Model):
         max_length=30,
         verbose_name='фамилия')
 
-    date_birth = models.DateField(
-        verbose_name='дата рождения',
-    )
 
     city = models.TextField(
         max_length=40,
@@ -27,22 +24,6 @@ class Person(models.Model):
     )
     # TODO придумать способ для выбора городов (через селекты)
 
-    EDUCATION_TYPES = (
-        ('HIGH', 'Высшее'),
-        ('SECONDARY', 'Среднее'),
-        ('BASIC', 'Основное'),
-    )
-
-    education = models.CharField(
-        max_length=40,
-        choices=EDUCATION_TYPES,
-        verbose_name='образование'
-    )
-
-    profession = models.CharField(
-        max_length=40,
-        verbose_name='профессия',
-    )
 
     donated_money = models.DecimalField(
         max_digits=1000000,
