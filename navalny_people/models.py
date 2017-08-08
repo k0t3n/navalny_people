@@ -6,7 +6,11 @@ class Person(models.Model):
     Модель карточки человека
     """
 
-    photo = models.ImageField(verbose_name='фото')  # Ещё не работал с аплоадом фоток
+    photo = models.ImageField(
+        upload_to='image/',
+        default='image/default.jpg',
+        verbose_name='фото',
+    )
 
     first_name = models.CharField(
         max_length=20,
@@ -41,7 +45,7 @@ class Person(models.Model):
     )
     moderated = models.BooleanField(
         default=False,
-        verbose_name='проверен модераторами'
+        verbose_name='Проверен'
     )
 
     def create_person(self):
@@ -49,8 +53,11 @@ class Person(models.Model):
         pass
 
     def get_full_name(self):
-        return '%s %s'.format(self.first_name, self.last_name)
+        return '{} {}'.format(self.first_name, self.last_name)
+
+    def __str__(self):
+        return self.get_full_name()
 
     class Meta:
-        verbose_name = 'персону '
-        verbose_name_plural = 'персоны'
+        verbose_name = 'человек'
+        verbose_name_plural = 'люди'

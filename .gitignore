@@ -9,3 +9,4 @@ out
 gen
 .idea/
 db.sqlite3
+core/__pycache__/
