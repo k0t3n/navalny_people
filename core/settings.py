@@ -51,6 +51,9 @@ USE_L10N = True
 USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/assets/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'navalny_people/static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
 MEDIA_ROOT = os.path.join(BASE_DIR, 'files')
 GOOGLEMAPS_KEY = 'ALIdadfspidjfioj4j98h9p34h '
