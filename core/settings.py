@@ -77,3 +77,4 @@ MEDIA_URL = '/assets/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'navalny_people/static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'files')
 TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'navalny_people/templates'),)
+GOOGLEMAPS_KEY = 'ALIdadfspidjfioj4j98h9p34h '
