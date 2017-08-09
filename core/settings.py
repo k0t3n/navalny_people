@@ -4,7 +4,7 @@ from core.settings_local import *
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '-)agk^!pxbcf9&krm@rr&)=&%0sh0rst!b5$fwvbkpt0w_+p3-'
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['navalny-people.k0t3n.com']
 INSTALLED_APPS = [
     # Admin apps
     'suit',
