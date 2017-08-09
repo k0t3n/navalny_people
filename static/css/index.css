@@ -1,0 +1,468 @@
+@font-face {
+    font-family: Activist;
+    src: url('../fonts/Activist.ttf');
+}
+
+@font-face {
+    font-family: Exo2;
+    src: url('../fonts/Exo2.otf');
+}
+
+body {
+    font-family: 'Activist','Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0;
+}
+
+.wrapper {
+    box-sizing: border-box;
+    height: 100%;
+    max-width: 1170px;
+    margin: 0 auto;
+}
+
+.background_wrapper {
+    box-sizing: border-box;
+    height: 100%;
+    max-width: 1900px;
+    margin: 0 auto;
+}
+
+/* NAVBAR START */
+
+.navbar-brand .logo {
+    position: relative;
+    top: 30px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    z-index: 2;
+}
+
+.navbar-brand .duck {
+    position: absolute;
+    top: 62px;
+    width: 50px;
+    height: 50px;
+    z-index: 1;
+}
+
+.navbar {
+    background: #fff;
+    margin: 0;
+}
+
+.navbar .nav {
+    margin-left: 80px;
+}
+
+.navbar .nav li {
+    margin: 0 10px 0 10px;
+}
+
+.navbar .nav li > a {
+    text-transform: uppercase;
+    color: #0d7fa3;
+}
+
+.navbar .nav li > a:hover {
+    color: #ff3300;
+}
+
+.active_link {
+    border-bottom: 1px solid #ff3300;
+}
+
+.navbar .nav .active_link > a {
+    color: #ff3300;
+}
+
+.navbar .nav .header_button {
+    margin: 20px 0 0 0;
+    box-sizing: border-box;
+    height: inherit;
+    padding: 12px 20px;
+    border: 1px solid #0d7fa3;
+    border-radius: 3px;
+}
+
+.navbar .nav .header_button:hover {
+    color: #fff;
+    background: #0d7fa3;
+}
+
+.mobile_button {
+    position: relative;
+    top: 35px;
+    left: 25vw;
+    box-sizing: border-box;
+    height: inherit;
+    padding: 12px 20px;
+    border: 1px solid #0d7fa3;
+    border-radius: 3px;
+    display: none;
+}
+
+.mobile_button:hover {
+    color: #fff;
+    background: #0d7fa3;
+    text-decoration: none;
+}
+
+.mobile_button:focus {
+    text-decoration: none;
+}
+
+.mobile_button:visited {
+    text-decoration: none;
+}
+
+/* NAVBAR END */
+
+/* SCROLLER TEXT START */
+
+.scroller_text {
+    color: #0d7fa3;
+    text-align: center;
+    text-transform: uppercase;
+    position: absolute;
+    left: 410px;
+    top: 140px;
+}
+
+.scroller_text p {
+    margin-bottom: 0;
+}
+
+.scroller_text h2 {
+    color: #fff;
+    text-shadow: 0 0 15px rgba(0,0,0,0.2);
+    font-size: 48px;
+    margin-top: 0;
+}
+
+/* SCROLLER TEXT END */
+
+/* SCROLLER START */
+
+.scroller_wrapper {
+    padding-top: 140px;
+    height: 330px;
+    background: url('../images/background.jpg') no-repeat;
+}
+
+.my-scroller {
+    max-width: 1500px;
+    min-width: 320px;
+    margin: 0 auto;
+}
+
+.ab_scroller-item {
+    box-sizing: border-box;
+    width: 110px;
+    height: 200px;
+    padding: 35px 0 0 7px;
+}
+
+.ab_scroller-item img {
+    border-radius: 100%;
+}
+
+.ab_scroller-item img:hover {
+    transform: scale(1.2);
+    opacity: 0.5;
+}
+
+/* SCROLLER END */
+
+/* COUNTER START */
+
+.counter div {
+    text-transform: uppercase;
+    font-size: 12px;
+    text-align: center;
+    color: #ff3300;
+}
+
+.counter div h2 {
+    margin-bottom: 0;
+    font-size: 35px;
+    color: #0d7fa3;
+}
+
+/* COUNTER END */
+
+/* FORM START */
+
+.form-header {
+    margin-top: 154px;
+    color: black;
+    text-align: center;
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+.form-header p {
+    font-family: Exo2, 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    color: #999999;
+}
+
+.form {
+    border: 2px solid #ff3300;
+    border-left: none;
+    border-right: none;
+    padding: 50px 10px 0 10px;
+    margin: 0 auto 118px auto;
+    max-width: 770px;
+}
+
+.form input, .form textarea {
+    box-sizing: border-box;
+    margin-bottom: 30px;
+    font-family: Exo2, 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-weight: 300;
+    color: #999999;
+    border: 1px solid #0d7fa3;
+    border-radius: 0;
+}
+
+.form input {
+    height: 40px;
+}
+
+.form textarea {
+    resize: none;
+}
+
+.form input[type=submit] {
+    font-family: Activist, 'Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+
+/* FORM END */
+
+/* HOWITWORKS START */
+
+.how_it_works {
+    margin: 0 auto 130px auto;
+    max-width: 771px;
+}
+
+.how_it_works-header {
+    margin-bottom: 60px;
+    color: black;
+    text-align: center;
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+.how_it_works-header p {
+    font-family: Exo2, 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    color: #999999;
+}
+
+.how_it_works-item {
+    margin-bottom: 10px;
+}
+
+.how_it_works-item a {
+    padding: 20px 20px 20px 20px;
+    font-family: Exo2, 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-weight: 300;
+    text-decoration: none;
+    display: block;
+    border: 1px solid #0d7fa3;
+    width: 100%;
+}
+
+.how_it_works-item a:hover {
+    text-decoration: none;
+    color: #ff3300;
+}
+
+.how_it_works-item a span {
+    transform: rotate(0deg);
+}
+
+.how_it_works-item p {
+    padding: 20px 20px 20px 20px;
+    font-family: Exo2, 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-weight: 300;
+    color: #999999;
+    display: none;
+    border: 1px solid #0d7fa3;
+    border-top: none;
+    width: 100%;
+}
+/* HOWITWORKS END */
+
+/* MEDIA START */
+
+@media (max-width: 991px) {
+    .wrapper {
+        width: 100%;
+    }
+
+    .navbar .nav .header_button {
+        display: none;
+    }
+
+    .write_button {
+        display: block;
+        width: 170px;
+    }
+
+    .scroller_text {
+        left: 350px;
+    }
+
+    .counter div p {
+        margin: 0 auto;
+        padding-bottom: 20px;
+        width: 200px;
+        border-bottom: 1px solid #999999;
+    }
+
+    .counter div:last-child p {
+        border-bottom: none;
+    }
+
+    .how_it_works {
+        max-width: 700px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-brand .logo {
+        top: -15px;
+    }
+
+    .navbar .nav {
+        margin-left: 0;
+    }
+
+    .mobile_button {
+        display: inline;
+        width: 170px
+    }
+
+    .scroller_text {
+        display: none;
+    }
+
+    .how_it_works {
+        max-width: 500px;
+    }
+
+    .navbar-brand .duck {
+        display: none;
+    }
+}
+
+@media (max-width: 505px) {
+    .mobile_button {
+        display: none;
+    }
+
+    .navbar .nav .header_button {
+        display: block;
+        width: 170px
+    }
+
+    .how_it_works {
+        max-width: 300px;
+    }
+}
+
+/* MEDIA END */
+
+/* ANIMATIONS START */
+
+.navbar-toggle {
+    border: none;
+    background: transparent !important;
+}
+.navbar-toggle:hover {
+    background: transparent !important;
+}
+.navbar-toggle .icon-bar {
+    width: 22px;
+    transition: all 0.2s;
+}
+.navbar-toggle .top-bar {
+    transform: rotate(45deg);
+    transform-origin: 10% 10%;
+}
+.navbar-toggle .middle-bar {
+    opacity: 0;
+}
+.navbar-toggle .bottom-bar {
+    transform: rotate(-45deg);
+    transform-origin: 10% 90%;
+}
+.navbar-toggle.collapsed .top-bar {
+    transform: rotate(0);
+}
+.navbar-toggle.collapsed .middle-bar {
+    opacity: 1;
+}
+.navbar-toggle.collapsed .bottom-bar {
+    transform: rotate(0);
+}
+
+@keyframes animation-1 {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(20px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes animation-2 {
+    0% {
+        transform: translateY(30px);
+    }
+    50% {
+        transform: translateY(50px);
+    }
+    100% {
+        transform: translateY(30px);
+    }
+}
+
+@keyframes animation-3 {
+    0% {
+        transform: translateY(-20px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(-20px);
+    }
+}
+
+.animation-1 {
+    display: block;
+    transform: translateY(0);
+    animation: animation-1 7.5s infinite ease-in-out;
+}
+
+.animation-2 {
+    display: block;
+    transform: translateY(30px);
+    animation: animation-2 8.5s infinite ease-in-out;
+}
+
+.animation-3 {
+    display: block;
+    transform: translateY(-20px);
+    animation: animation-3 8s infinite ease-in-out;
+}
+/* ANIMATIONS END */
