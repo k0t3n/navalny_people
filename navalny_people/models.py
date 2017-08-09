@@ -31,12 +31,13 @@ class Person(models.Model):
         max_length=30,
         verbose_name='фамилия'
     )
-    city = models.CharField(
-        max_length=40,
-        verbose_name='город'
+    address = models.ForeignKey(
+        'geodata.GeoCoding',
+        related_name='person_geodata',
+        verbose_name='геодата пользователя',
+        blank=True, null=True
     )
     bio = models.TextField(
-        max_length=10000,
         verbose_name='биография'
     )
     donated_money = models.DecimalField(
