@@ -1,4 +1,9 @@
 from django.db import models
+from imagekit.models import ProcessedImageField, ImageSpecField
+from imagekit.processors import ResizeToFit
+
+from navalny_people.managers import PeopleManager
+from navalny_people.utils import upload_to
 
 
 class Person(models.Model):
@@ -6,39 +11,44 @@ class Person(models.Model):
     Модель карточки человека
     """
 
-    photo = models.ImageField(
-        upload_to='image/',
+    photo = ProcessedImageField(
+        upload_to=upload_to,
+        format='JPEG',
         default='image/default.jpg',
         verbose_name='фото',
     )
-
+    preview = ImageSpecField(
+        format='JPEG',
+        options={'quality': 80},
+        source='photo',
+        processors=[ResizeToFit(300, 300)]
+    )
     first_name = models.CharField(
         max_length=20,
         verbose_name='имя',
     )
-
     last_name = models.CharField(
         max_length=30,
-        verbose_name='фамилия')
-
+        verbose_name='фамилия'
+    )
     city = models.CharField(
         max_length=40,
         verbose_name='город'
     )
-    # TODO придумать способ для выбора городов (через селекты)
-
     bio = models.TextField(
         max_length=10000,
         verbose_name='биография'
     )
-
     donated_money = models.DecimalField(
         max_digits=1000000,
         decimal_places=0,
         default=0,
         verbose_name='пожертвованных средств'
     )
-
+    date_register = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name='дата регистрации'
+    )
     verified = models.BooleanField(
         default=False,
         verbose_name='верифицирован'
@@ -48,12 +58,10 @@ class Person(models.Model):
         verbose_name='Проверен'
     )
 
-    def create_person(self):
-        # TODO
-        pass
+    objects = PeopleManager()
 
     def get_full_name(self):
-        return '{} {}'.format(self.first_name, self.last_name)
+        return f'{self.first_name} {self.last_name}'
 
     def __str__(self):
         return self.get_full_name()
