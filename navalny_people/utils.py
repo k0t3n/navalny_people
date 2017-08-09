@@ -17,14 +17,13 @@ def upload_to(instance, filename):
     return os.path.join(basedir, filename[:4], filename)
 
 
-def decode_address_by_googlemaps(value, lang):
+def decode_address_by_googlemaps(value):
     """
     :param value: string address for geocode to geo data
-    :param lang: str value for translate instance - get data from header
     :return: saved instance to model
     """
     import geocoder
-    options_geocoder = {'key': settings.GOOGLEMAPS_KEY, 'language': lang}
+    options_geocoder = {'key': settings.GOOGLEMAPS_KEY, 'language': 'ru'}
     gmaps_data = geocoder.google(value.replace(' ', '-'), **options_geocoder)
     if gmaps_data.json.get('status', None) == 'zero_results'.upper():
         value = value.replace(' ', '')
