@@ -13,4 +13,4 @@ __pycache__/
 # Django stuff:
 *.log
 .env_development
-/core/settings.py
+core/settings_local.py
