@@ -8,7 +8,7 @@ urlpatterns = [
     url(
         r'^$',
         MainPage.as_view(),
-        name='example'
+        name='main_page'
     ),
     url(
         r'^about/$',

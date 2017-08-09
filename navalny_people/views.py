@@ -13,7 +13,7 @@ class MainPage(ListView):
     :return:
     """
     def get(self, request, *args, **kwargs):
-        return render(self.request, 'example.html')
+        return render(self.request, 'main_page.html')
 
 
 class AboutPage(ListView):
@@ -76,4 +76,4 @@ class SearchPage(ListView):
     :return:
     """
     def get(self, request, *args, **kwargs):
-        return render(self.request, 'example.html')
+        return render(self.request, 'search_page.html')

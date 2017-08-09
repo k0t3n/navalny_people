@@ -4,7 +4,6 @@ from core.settings_local import *
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '-)agk^!pxbcf9&krm@rr&)=&%0sh0rst!b5$fwvbkpt0w_+p3-'
-ALLOWED_HOSTS = ['navalny-people.k0t3n.com']
 INSTALLED_APPS = [
     # Admin apps
     'suit',
@@ -52,6 +51,9 @@ USE_L10N = True
 USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/assets/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'navalny_people/static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
 MEDIA_ROOT = os.path.join(BASE_DIR, 'files')
 GOOGLEMAPS_KEY = 'ALIdadfspidjfioj4j98h9p34h '
