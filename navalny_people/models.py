@@ -41,7 +41,7 @@ class Person(models.Model):
         verbose_name='биография'
     )
     donated_money = models.DecimalField(
-        max_digits=1000000,
+        max_digits=7,
         decimal_places=0,
         default=0,
         verbose_name='пожертвованных средств'

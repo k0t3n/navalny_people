@@ -61,7 +61,7 @@ class DetailProfilePage(DetailView):
     def get(self, request, *args, **kwargs):
         person_id = kwargs['pk']
         if not self.queryset.filter(pk=person_id).exists():
-            return render(self.request, 'not_profile_exists.html')
+            return render(self.request, '404.html')
         person = self.get_queryset().get(pk=person_id)
         context = {
             'person': person
