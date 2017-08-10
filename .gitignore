@@ -14,3 +14,4 @@ __pycache__/
 *.log
 .env_development
 core/settings_local.py
+/db.sqlite3
