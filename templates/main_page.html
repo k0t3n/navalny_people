@@ -69,9 +69,9 @@
     </div>
     <!-- Counter end -->
 
-    <!-- Form start -->
-    <div class="wrapper">
-    <div class="form-header" id="form">
+    <!-- Form sta   rt -->
+    <div class="wrapper" id="form">
+    <div class="form-header">
                 <h2>Поделись</h2>
                 <p>Своей историей с другими</p>
             </div>
@@ -108,7 +108,15 @@
 
                 <div class="row">
                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <textarea class="form-control" rows="5" id="story" placeholder="Постарайтесь кратко и ясно поделиться вашей историей" required></textarea>
+                        <div class="help">
+                            <p>Все предельно просто, как раз, два, три. Расскажите вашу историю и ожидайте проверку
+                    модерацией.Все предельно просто, как раз, два, три. Расскажите вашу историю и ожидайте проверку
+                    модерацией.</p>
+                        </div>
+                        <div class="story-container">
+                            <textarea class="form-control" rows="5" id="story" placeholder="Постарайтесь кратко и ясно поделиться вашей историей" required></textarea>
+                            <span class="glyphicon glyphicon-question-sign" id="help_button"></span>
+                        </div>
                     </div>
                 </div>
 
