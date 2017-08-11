@@ -3,54 +3,48 @@
 {% block title %}Навальный Люди{% endblock %}
 
 {% block content %}
-    <!-- Scroller text start -->
-    <div class="scroller_text">
-        <p>Своей историей уже</p>
-        <h2>Поделились</h2>
-    </div>
-    <!-- Scroller text end -->
 
     <!-- Scroller start -->
-    <div class="background_wrapper">
-        <div class="scroller_wrapper">
-            <div class="person_scroller">
-                {% for person in persons %}
-                    <a href="{% url 'detail_person' person.pk %}"
-                       class="animation-{{ person.position }}">
-                        <img src="{{ person.preview.url }}"  width="100px" height="100px"/>
-                    </a>
-                {% endfor %}
+
+    <div class="background_text">
+            <p>Своей историей уже</p>
+            <h2>Поделились</h2>
+    </div>
+
+    <div class="scroller_wrapper">
+        <div class="person_scroller">
+            {% for person in persons %}
+                <a href="{% url 'detail_person' person.pk %}"
+                   class="animation-{{ person.position }}">
+                    <img src="{{ person.preview.url }}"  width="100px" height="100px"/>
+                </a>
+            {% endfor %}
+        </div>
+        <div class="wrapper">
+            <div class="counter container-fluid">
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2">
+                        <h2>769</h2>
+                        <p>Знаменитостей</p>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                        <h2>42 мл.</h2>
+                        <p>Пожертвовано</p>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                        <h2>571 тыс.</h2>
+                        <p>Волонтеров</p>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                        <h2>82 тыс.</h2>
+                        <p>Уникальных историй</p>
+                    </div>
             </div>
         </div>
     </div>
+
     <!-- Scroller end -->
 
-    <!-- Counter start -->
-    <div class="wrapper">
-        <div class="counter container-fluid">
-            <!--<div class="row">-->
-                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2">
-                    <h2>769</h2>
-                    <p>Знаменитостей</p>
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                    <h2>42 мл.</h2>
-                    <p>Пожертвовано</p>
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                    <h2>571 тыс.</h2>
-                    <p>Волонтеров</p>
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                    <h2>82 тыс.</h2>
-                    <p>Уникальных историй</p>
-                </div>
-            <!--</div>-->
-        </div>
-    </div>
-    <!-- Counter end -->
-
-    <!-- Form sta   rt -->
+    <!-- Form start -->
     <div class="wrapper" id="form">
     <div class="form-header">
                 <h2>Поделись</h2>
