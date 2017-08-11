@@ -52,7 +52,7 @@
                     <div class="collapse navbar-collapse" id="nav_target">
                         <ul class="nav navbar-nav">
                             <li class="active_link"><a href="{% url 'main_page' %}">Главная</a></li>
-                            <li><a href="{% url 'search_page' %}">Поиск</a></li>
+                            <li><a href="{% url 'people_page' %}">Люди</a></li>
                             <li><a href="#">Топ</a></li>
                             <li><a href="#how_it_works">Как это работает</a></li>
                             <li><a href="#">О нас</a></li>
@@ -80,6 +80,8 @@
 <!-- Third-party scripts -->
 <script src="{% static 'js/jQueryRotate.js' %}"></script>
 <script src="{% static 'js/autocomplete.js' %}"></script>
+<script src="{% static 'js/addFile.js' %}"></script>
+<script src="{% static 'js/helpContainer.js' %}"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCi3dmQDG8mz6Mb6w1FzVXk-OvYfUvZE04&libraries=places&callback=initAutocomplete" async defer></script>
 <!-- Aniations and scroll -->
 <script src="{% static 'js/animation.js' %}"></script>
