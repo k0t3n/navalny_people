@@ -17,6 +17,8 @@ class MainPage(ListView):
                  1, 2, 1, 3, 1, 2, 1, 3, 1, 2, 1, 3, 1]
     paginator_class = None
 
+    active_menu = 'main'
+
     def get_queryset(self):
         return self.model.objects. \
             select_related('address').order_by('?')[:25]
@@ -26,7 +28,8 @@ class MainPage(ListView):
         for i, person in enumerate(persons):
             person.position = self.positions[i]
         context = {
-            'persons': persons
+            'persons': persons,
+            'active': self.active_menu
         }
         return render(self.request, 'main_page.html', context=context)
 
@@ -90,5 +93,7 @@ class PeoplePage(ListView):
     :param request:
     :return:
     """
+    active_menu = 'people'
+
     def get(self, request, *args, **kwargs):
-        return render(self.request, 'people_page.html')
+        return render(self.request, 'people_page.html', {'active': self.active_menu})
