@@ -12,8 +12,19 @@ class MainPage(ListView):
     :param request:
     :return:
     """
+    model = Person
+    paginator_class = None
+
+    def get_queryset(self):
+        return self.model.objects. \
+            select_related('address').order_by('?')[:25]
+
     def get(self, request, *args, **kwargs):
-        return render(self.request, 'main_page.html')
+        persons = self.get_queryset()
+        context = {
+            'persons': persons
+        }
+        return render(self.request, 'main_page.html', context=context)
 
 
 class AboutPage(ListView):

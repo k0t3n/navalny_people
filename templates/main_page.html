@@ -14,31 +14,11 @@
     <div class="background_wrapper">
         <div class="scroller_wrapper">
             <div class="person_scroller">
-                <a href="#" class="animation-1"><img src="https://pp.userapi.com/c625831/v625831826/526ad/ltUSYhX7abk.jpg"  width="100px" height="100px"/></a>
-                <a href="#" class="animation-2"><img src="https://pp.userapi.com/c625831/v625831826/526ad/ltUSYhX7abk.jpg" width="100px" height="100px"/></a>
-                <a href="#" class="animation-1"><img src="https://pp.userapi.com/c625831/v625831826/526ad/ltUSYhX7abk.jpg" width="100px" height="100px"/></a>
-                <a href="#" class="animation-3"><img src="https://pp.userapi.com/c625831/v625831826/526ad/ltUSYhX7abk.jpg" width="100px" height="100px"/></a>
-                <a href="#" class="animation-1"><img src="https://pp.userapi.com/c625831/v625831826/526ad/ltUSYhX7abk.jpg" width="100px" height="100px"/></a>
-                <a href="#" class="animation-2"><img src="https://pp.userapi.com/c625831/v625831826/526ad/ltUSYhX7abk.jpg" width="100px" height="100px"/></a>
-                <a href="#" class="animation-1"><img src="https://pp.userapi.com/c625831/v625831826/526ad/ltUSYhX7abk.jpg" width="100px" height="100px"/></a>
-                <a href="#" class="animation-3"><img src="https://pp.userapi.com/c625831/v625831826/526ad/ltUSYhX7abk.jpg" width="100px" height="100px"/></a>
-                <a href="#" class="animation-1"><img src="https://pp.userapi.com/c625831/v625831826/526ad/ltUSYhX7abk.jpg" width="100px" height="100px"/></a>
-                <a href="#" class="animation-2"><img src="https://pp.userapi.com/c625831/v625831826/526ad/ltUSYhX7abk.jpg" width="100px" height="100px"/></a>
-                <a href="#" class="animation-1"><img src="https://pp.userapi.com/c625831/v625831826/526ad/ltUSYhX7abk.jpg"  width="100px" height="100px"/></a>
-                <a href="#" class="animation-3"><img src="https://pp.userapi.com/c625831/v625831826/526ad/ltUSYhX7abk.jpg" width="100px" height="100px"/></a>
-                <a href="#" class="animation-1"><img src="https://pp.userapi.com/c625831/v625831826/526ad/ltUSYhX7abk.jpg" width="100px" height="100px"/></a>
-                <a href="#" class="animation-2"><img src="https://pp.userapi.com/c625831/v625831826/526ad/ltUSYhX7abk.jpg" width="100px" height="100px"/></a>
-                <a href="#" class="animation-1"><img src="https://pp.userapi.com/c625831/v625831826/526ad/ltUSYhX7abk.jpg" width="100px" height="100px"/></a>
-                <a href="#" class="animation-3"><img src="https://pp.userapi.com/c625831/v625831826/526ad/ltUSYhX7abk.jpg" width="100px" height="100px"/></a>
-                <a href="#" class="animation-1"><img src="https://pp.userapi.com/c625831/v625831826/526ad/ltUSYhX7abk.jpg" width="100px" height="100px"/></a>
-                <a href="#" class="animation-2"><img src="https://pp.userapi.com/c625831/v625831826/526ad/ltUSYhX7abk.jpg" width="100px" height="100px"/></a>
-                <a href="#" class="animation-1"><img src="https://pp.userapi.com/c625831/v625831826/526ad/ltUSYhX7abk.jpg" width="100px" height="100px"/></a>
-                <a href="#" class="animation-3"><img src="https://pp.userapi.com/c625831/v625831826/526ad/ltUSYhX7abk.jpg" width="100px" height="100px"/></a>
-                <a href="#" class="animation-1"><img src="https://pp.userapi.com/c625831/v625831826/526ad/ltUSYhX7abk.jpg" width="100px" height="100px"/></a>
-                <a href="#" class="animation-2"><img src="https://pp.userapi.com/c625831/v625831826/526ad/ltUSYhX7abk.jpg" width="100px" height="100px"/></a>
-                <a href="#" class="animation-1"><img src="https://pp.userapi.com/c625831/v625831826/526ad/ltUSYhX7abk.jpg" width="100px" height="100px"/></a>
-                <a href="#" class="animation-3"><img src="https://pp.userapi.com/c625831/v625831826/526ad/ltUSYhX7abk.jpg" width="100px" height="100px"/></a>
-                <a href="#" class="animation-1"><img src="https://pp.userapi.com/c625831/v625831826/526ad/ltUSYhX7abk.jpg" width="100px" height="100px"/></a>
+                {% for person in persons %}
+                    <a href="{{ person.pk }}" class="animation-{{ person.pk }}">
+                        <img src="{{ person.preview.url }}"  width="100px" height="100px"/>
+                    </a>
+                {% endfor %}
             </div>
         </div>
     </div>
