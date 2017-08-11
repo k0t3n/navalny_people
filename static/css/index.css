@@ -564,4 +564,10 @@ body {
     transform: translateY(-20px);
     animation: animation-3 8s infinite ease-in-out;
 }
+
+.animation-1 img,
+.animation-2 img,
+.animation-3 img{
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
 /* ANIMATIONS END */
