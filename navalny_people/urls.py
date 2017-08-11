@@ -1,6 +1,6 @@
 from django.conf.urls import url, include
 from navalny_people.views import (
-    AboutPage, SearchPage, DetailProfilePage, MainPage,
+    AboutPage, PeoplePage, DetailProfilePage, MainPage,
     ListProfilesPage
 )
 
@@ -16,9 +16,9 @@ urlpatterns = [
         name='about_page'
     ),
     url(
-        r'^search/$',
-        SearchPage.as_view(),
-        name='search_page'
+        r'^people/$',
+        PeoplePage.as_view(),
+        name='people_page'
     ),
     url(
         r'^person/', include([
