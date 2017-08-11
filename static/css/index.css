@@ -116,6 +116,8 @@ body {
     text-decoration: none;
 }
 
+
+
 /* NAVBAR END */
 
 /* SCROLLER TEXT START */
@@ -243,11 +245,40 @@ body {
 }
 
 .form textarea {
+    width: 100%;
     resize: none;
 }
 
+.help {
+    font-family: Exo2, 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    color: #363636;
+    display: none;
+    background: #fff;
+    position: absolute;
+    top: 30px;
+    right: 45px;
+    padding: 12px;
+    width: 300px;
+    border: 1px solid #363636;
+    z-index: 2;
+}
+
+.story-container {
+    z-index: 1;
+    position: relative;
+}
+
+.story-container span {
+    color: #999999;
+    font-size: 21px;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    cursor: pointer;
+}
+
 .form input[type=submit] {
-    background: #cccccc;
+    background: rgba(232, 232, 232, 0.67);
     font-family: Activist, 'Helvetica Neue',Helvetica,Arial,sans-serif;
     margin-top: 24px;
 }
