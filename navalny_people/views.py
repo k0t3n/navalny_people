@@ -13,6 +13,8 @@ class MainPage(ListView):
     :return:
     """
     model = Person
+    positions = [1, 2, 1, 3, 1, 2, 1, 3, 1, 2, 1, 3,
+                 1, 2, 1, 3, 1, 2, 1, 3, 1, 2, 1, 3, 1]
     paginator_class = None
 
     def get_queryset(self):
@@ -21,6 +23,8 @@ class MainPage(ListView):
 
     def get(self, request, *args, **kwargs):
         persons = self.get_queryset()
+        for i, person in enumerate(persons):
+            person.position = self.positions[i]
         context = {
             'persons': persons
         }

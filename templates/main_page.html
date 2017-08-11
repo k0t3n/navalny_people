@@ -15,7 +15,8 @@
         <div class="scroller_wrapper">
             <div class="person_scroller">
                 {% for person in persons %}
-                    <a href="{{ person.pk }}" class="animation-{{ person.pk }}">
+                    <a href="{% url 'detail_person' person.pk %}"
+                       class="animation-{{ person.position }}">
                         <img src="{{ person.preview.url }}"  width="100px" height="100px"/>
                     </a>
                 {% endfor %}
