@@ -69,11 +69,11 @@ class DetailProfilePage(DetailView):
         return render(self.request, 'example.html', context=context)
 
 
-class SearchPage(ListView):
+class PeoplePage(ListView):
     """
     Страница поиска
     :param request:
     :return:
     """
     def get(self, request, *args, **kwargs):
-        return render(self.request, 'search_page.html')
+        return render(self.request, 'people_page.html')
