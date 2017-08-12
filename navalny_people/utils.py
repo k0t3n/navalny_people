@@ -172,17 +172,19 @@ def fetch_social_data(social_id, social_type, token=None):
     :return: tuple with data
     """
     null = None
+    from urllib.request import urlopen
     SocialAccount = namedtuple('SocialAccount', [
         'first_name', 'last_name', 'email', 'birthday', 'avatar', 'uid'])
     user_model = __import__('navalny_people.models', globals(), locals(),
-                            ['Person'], -1)
+                            ['Person'], 0)
     social_type = int(social_type)
-    if social_type == user_model.User.VK:
+    if social_type == user_model.Person.VK:
         vk_user_url = 'https://api.vk.com/method/users.get?uids=%s&' \
                       'fields=uid,first_name,last_name,bdate,' \
                       'photo_100' % social_id
-        vk_data_url = urllib.request.urlopen(vk_user_url)
+        vk_data_url = urlopen(vk_user_url)
         vk_dump = json.load(vk_data_url)
+        print(vk_dump)
         SocialAccount.email = null
         SocialAccount.uid = vk_dump['response'][0].get('uid', null)
         SocialAccount.first_name = vk_dump['response'][0].get('first_name',null)
@@ -196,17 +198,20 @@ def fetch_social_data(social_id, social_type, token=None):
             else:
                 SocialAccount.birthday = datetime. \
                     strptime(bdate, '%d.%m').strftime('1970-%m-%d')
-        SocialAccount.avatar = vk_dump['response'][0]['photo_200']
+        try:
+            SocialAccount.avatar = vk_dump['response'][0]['photo_200']
+        except KeyError:
+            SocialAccount.avatar = vk_dump['response'][0]['photo_100']
 
         return SocialAccount
-    elif social_type == user_model.User.FB:
+    elif social_type == user_model.Person.FB:
         fb_user_url = 'https://graph.facebook.com/v2.8/%s?fields=id,' \
                       'birthday,first_name,last_name,email,' \
                       'picture&locale=ru&access_token=%s' % (social_id, token)
-        fb_data_url = urllib.request.urlopen(fb_user_url)
+        fb_data_url = urlopen(fb_user_url)
         fb_pic_url = 'https://graph.facebook.com/v2.8/%s/picture?' \
                      'width=200&height=200' % social_id
-        SocialAccount.avatar = urllib.request.urlopen(fb_pic_url).url
+        SocialAccount.avatar = urlopen(fb_pic_url).url
         fb_dump = json.load(fb_data_url)
         SocialAccount.uid = fb_dump.get('uid', null)
         SocialAccount.email = fb_dump.get('email', null)

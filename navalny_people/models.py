@@ -12,7 +12,11 @@ class Person(AbstractBaseUser, PermissionsMixin):
     """
     Модель карточки человека
     """
-
+    VK, FB = 0, 1
+    SOCIAL_TYPE = (
+        (VK, 'VKontakte'),
+        (FB, 'FaceBook')
+    )
     photo = ProcessedImageField(
         upload_to=upload_to,
         format='JPEG',
@@ -36,6 +40,11 @@ class Person(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(
         unique=True,
         verbose_name='E-mail'
+    )
+    social_type = models.PositiveSmallIntegerField(
+        default=VK,
+        choices=SOCIAL_TYPE,
+        verbose_name='тип социальной сети'
     )
     location = models.ForeignKey(
         'geodata.GeoCoding',
