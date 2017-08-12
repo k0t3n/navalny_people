@@ -29,13 +29,17 @@ class Person(models.Model):
     )
     last_name = models.CharField(
         max_length=30,
-        verbose_name='фамилия'
+        verbose_name='фамилия',
     )
     address = models.ForeignKey(
         'geodata.GeoCoding',
         related_name='person_geodata',
         verbose_name='геодата пользователя',
         blank=True, null=True
+    )
+    profession = models.CharField(
+        max_length=30,
+        verbose_name='профессия',
     )
     bio = models.TextField(
         verbose_name='биография'

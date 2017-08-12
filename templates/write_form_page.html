@@ -11,6 +11,7 @@
             </div>
         <div class="form container-fluid">
             <form action="" method="post">
+                {% csrf_token %}
                 <div class="row">
                     <div class="form-group col-lg-10 col-md-10 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1">
                         <input name="region" class="form-control" placeholder="Регион" id="region" required>

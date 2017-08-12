@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.urls import reverse
 from django.views.generic import (
@@ -13,9 +13,24 @@ def page_not_found(request):
 
 
 class Page404(ListView):
-
     def get(self, request, *args, **kwargs):
         return render(self.request, '404.html')
+
+
+class RandomPersons(ListView):
+    model = Person
+
+    def get(self, request, *args, **kwargs):
+        counts = self.request.GET.get('count', 2)
+        excluded_persons = self.request.GET.get('exclude')
+        persons = self.model.objects.order_by('?').exclude(pk__in=[
+            x for x in excluded_persons.split(',')
+        ])[:counts]
+        context = {'persons': map(lambda x: {
+            'id': x.pk, 'first_name': x.first_name,
+            'last_name': x.last_name},
+            persons)}
+        return JsonResponse(context)
 
 
 class MainPage(ListView):
@@ -32,7 +47,7 @@ class MainPage(ListView):
 
     def get_queryset(self):
         return self.model.objects. \
-            select_related('address').order_by('?')[:25]
+                   select_related('address').order_by('?')[:25]
 
     def get(self, request, *args, **kwargs):
         persons = self.get_queryset()
@@ -87,14 +102,30 @@ class WriteAboutMe(ListView, CreateView):
         return render(self.request, 'write_form_page.html')
 
     def post(self, request, *args, **kwargs):
-        user = self.request.user
-        about = self.request.POST.get('write', None)
-        if about is None:
+        context = {}
+        for key, value in self.request.POST.items():
+            if key != '' or value is not None:
+                if key in 'region':
+                    context[key] = value
+                elif key in 'first_name':
+                    context[key] = value
+                elif key in 'second_name':
+                    context[key] = value
+                elif key in 'profession':
+                    context[key] = value
+                elif key in 'donations':
+                    context[key] = value
+                elif key in 'email':
+                    context[key] = value
+                elif key in 'story':
+                    context[key] = value
+        print(context)
+        # person = self.model.objects.create(**context)
+        # TODO: Stmh with person object
+        if len(context.keys()) == 0:
             return HttpResponseRedirect(
                 reverse('404')
             )
-        user.bio = about
-        user.save(update_fields=['bio'])
         return HttpResponseRedirect(
             reverse('main_page')
         )
