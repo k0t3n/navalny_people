@@ -5,7 +5,7 @@ from django.urls import reverse
 from django.views.generic import (
     ListView, DetailView, CreateView
 )
-from navalny_people import utils
+from navalny_people.utils import decode_address_by_googlemaps
 
 from navalny_people.models import Person
 
@@ -122,8 +122,10 @@ class WriteAboutMe(ListView, CreateView):
                 if key in ('location', 'first_name', 'last_name',
                            'profession', 'donated_money', 'email', 'story'):
                     context[key] = value
-                if key in 'photo':
+                elif key in 'photo':
                     context[key] = File(self.request.FILES.get(key))
+                elif key in 'location':
+                    context[key] = decode_address_by_googlemaps(value)
         person = self.model.objects.create(**context)
         if len(context.keys()) == 0:
             return HttpResponseRedirect(
