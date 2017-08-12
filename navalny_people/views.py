@@ -105,21 +105,8 @@ class WriteAboutMe(ListView, CreateView):
         context = {}
         for key, value in self.request.POST.items():
             if key != '' or value is not None:
-                if key in 'region':
-                    context[key] = value
-                elif key in 'first_name':
-                    context[key] = value
-                elif key in 'second_name':
-                    context[key] = value
-                elif key in 'profession':
-                    context[key] = value
-                elif key in 'donations':
-                    context[key] = value
-                elif key in 'email':
-                    context[key] = value
-                elif key in 'story':
-                    context[key] = value
-                elif key in 'photo':
+                if key in ('location', 'first_name', 'last_name',
+                           'profession', 'donated_money', 'email', 'story'):
                     context[key] = value
         print(context)
         person = self.model.objects.create(**context)

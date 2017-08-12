@@ -31,7 +31,10 @@ class Person(models.Model):
         max_length=30,
         verbose_name='фамилия',
     )
-    address = models.ForeignKey(
+    email = models.EmailField(
+        verbose_name='E-mail'
+    )  # TODO поля
+    location = models.ForeignKey(
         'geodata.GeoCoding',
         related_name='person_geodata',
         verbose_name='геодата пользователя',
@@ -42,7 +45,7 @@ class Person(models.Model):
         verbose_name='профессия',
         default=''
     )
-    bio = models.TextField(
+    story = models.TextField(
         verbose_name='биография'
     )
     donated_money = models.DecimalField(
