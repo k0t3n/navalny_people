@@ -119,9 +119,11 @@ class WriteAboutMe(ListView, CreateView):
                     context[key] = value
                 elif key in 'story':
                     context[key] = value
+                elif key in 'photo':
+                    context[key] = value
         print(context)
-        # person = self.model.objects.create(**context)
-        # TODO: Stmh with person object
+        person = self.model.objects.create(**context)
+        # person.save()
         if len(context.keys()) == 0:
             return HttpResponseRedirect(
                 reverse('404')
