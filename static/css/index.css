@@ -485,11 +485,32 @@ body {
     top: 0;
     left: 0;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     overflow: auto;
 }
 
+.page_not_found a {
+    box-sizing: border-box;
+    padding: 12px 20px;
+    border: 1px solid #0d7fa3;
+    border-radius: 3px;
+}
+
+.page_not_found a:hover {
+    color: #fff;
+    background: #0d7fa3;
+    text-decoration: none;
+}
+
+.page_not_found a:focus {
+    text-decoration: none;
+}
+
+.page_not_found a:visited {
+    text-decoration: none;
+}
 
 /* 404 END */
 
