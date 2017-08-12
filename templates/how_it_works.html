@@ -5,7 +5,7 @@
 
 {% block content %}
 <!-- HowItWorks start -->
-    <div class="wrapper">
+     <div class="wrapper">
         <div class="how_it_works" id="how_it_works">
             <div class="how_it_works-header">
                 <h2>Как это работает?</h2>
@@ -55,3 +55,5 @@
     </div>
     <!-- HowItWorks end -->
 {% endblock %}
+
+{% block custom_js %}<script src="{% static 'js/how_it_works_animation.js' %}"></script>{% endblock %}

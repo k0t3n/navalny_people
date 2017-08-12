@@ -1,4 +1,5 @@
 {% extends 'template.html' %}
+{% load staticfiles %}
 
 {% block title %}Навальный Люди{% endblock %}
 
@@ -45,3 +46,4 @@
 
     <!-- Scroller end -->
 {% endblock %}
+{% block custom_js %}<script src="{% static 'js/animation.js' %}"></script>{% endblock %}

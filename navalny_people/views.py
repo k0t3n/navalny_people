@@ -80,9 +80,10 @@ class AboutPage(ListView):
     :param request:
     :return:
     """
+    active_menu = 'about'
 
     def get(self, request, *args, **kwargs):
-        return render(self.request, 'example.html')
+        return render(self.request, 'how_it_works.html', {'active': self.active_menu})
 
 
 class DetailProfilePage(DetailView):
