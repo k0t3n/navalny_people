@@ -112,9 +112,7 @@ class WriteAboutMe(ListView, CreateView):
                     context[key] = value
                 if key in 'photo':
                     context[key] = File(self.request.FILES.get(key))
-        print(context)
         person = self.model.objects.create(**context)
-        # person.save()
         if len(context.keys()) == 0:
             return HttpResponseRedirect(
                 reverse('404')
@@ -133,4 +131,5 @@ class ListPeoplePage(ListView):
     active_menu = 'people'
 
     def get(self, request, *args, **kwargs):
-        return render(self.request, 'list_people_page.html', {'active': self.active_menu})
+        context = {'active': self.active_menu}
+        return render(self.request, 'list_people_page.html', context)

@@ -1,3 +1,5 @@
+from django.contrib.auth.base_user import AbstractBaseUser
+from django.contrib.auth.models import PermissionsMixin
 from django.db import models
 from imagekit.models import ProcessedImageField, ImageSpecField
 from imagekit.processors import ResizeToFill
@@ -6,7 +8,7 @@ from navalny_people.managers import PeopleManager
 from navalny_people.utils import upload_to
 
 
-class Person(models.Model):
+class Person(AbstractBaseUser, PermissionsMixin):
     """
     Модель карточки человека
     """
@@ -32,8 +34,8 @@ class Person(models.Model):
         verbose_name='фамилия',
     )
     email = models.EmailField(
-        verbose_name='E-mail',
-        blank=True, null=True
+        unique=True,
+        verbose_name='E-mail'
     )
     location = models.ForeignKey(
         'geodata.GeoCoding',
@@ -68,13 +70,28 @@ class Person(models.Model):
         verbose_name='Проверен'
     )
 
+    REQUIRED_FIELDS = ['last_name', 'first_name']
+    USERNAME_FIELD = 'email'
+
     objects = PeopleManager()
 
     def get_full_name(self):
         return '{} {}'.format(self.first_name, self.last_name)
 
+    def has_module_perms(self, app_label):
+        return True
+
+    def has_perm(self, perm, obj=None):
+        return True
+
+    def has_perms(self, perm_list, obj=None):
+        return True
+
+    def get_short_name(self):
+        return f'{self.first_name, self.last_name[0]}'
+
     def __str__(self):
-        return self.get_full_name()
+        return self.get_short_name()
 
     class Meta:
         verbose_name = 'человек'
