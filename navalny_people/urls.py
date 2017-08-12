@@ -1,5 +1,9 @@
 from django.conf.urls import url, include
-from navalny_people.views import *
+from navalny_people.views import (
+    MainPage, AboutPage, ListPeoplePage,
+    WriteAboutMe, DetailProfilePage
+)
+
 
 urlpatterns = [
     url(
@@ -16,6 +20,11 @@ urlpatterns = [
         r'^people/$',
         ListPeoplePage.as_view(),
         name='people_page'
+    ),
+    url(
+        r'^write/$',
+        WriteAboutMe.as_view(),
+        name='write_page'
     ),
     url(
         r'^person/', include([

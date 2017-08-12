@@ -3,9 +3,22 @@ from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
 
+from navalny_people.views import Page404
+
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^', include('navalny_people.urls')),
+    url(
+        r'^admin/',
+        admin.site.urls
+    ),
+    url(
+        r'^',
+        include('navalny_people.urls')
+    ),
+    url(
+        r'^404/$',
+        Page404.as_view(),
+        name='404'
+    )
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL,
