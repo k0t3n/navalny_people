@@ -24,15 +24,27 @@ class RandomPersons(ListView):
 
     def get(self, request, *args, **kwargs):
         counts = self.request.GET.get('count', 2)
-        excluded_persons = self.request.GET.get('exclude')
-        persons = self.model.objects.order_by('?').exclude(pk__in=[
-            x for x in excluded_persons.split(',')
-        ])[:counts]
-        context = {'persons': map(lambda x: {
+        excluded_persons = self.request.GET.get('exclude', None)
+        persons = self.model.objects.order_by('?')
+        if excluded_persons is not None:
+            persons = persons.exclude(pk__in=[
+                x for x in excluded_persons.split(',')]
+            )
+        persons = persons[:int(counts)]
+        context = {'persons': list(map(lambda x: {
             'id': x.pk, 'first_name': x.first_name,
             'last_name': x.last_name},
-            persons)}
+            persons))}
         return JsonResponse(context)
+
+
+class RegisterPersonBySocial(CreateView):
+    model = Person
+
+    def post(self, request, *args, **kwargs):
+        json_data = self.request.body
+        person = self.model.objects.create_person()
+        return JsonResponse({'status': True})
 
 
 class MainPage(ListView):
@@ -112,9 +124,7 @@ class WriteAboutMe(ListView, CreateView):
                     context[key] = value
                 if key in 'photo':
                     context[key] = File(self.request.FILES.get(key))
-        print(context)
         person = self.model.objects.create(**context)
-        # person.save()
         if len(context.keys()) == 0:
             return HttpResponseRedirect(
                 reverse('404')
@@ -133,4 +143,5 @@ class ListPeoplePage(ListView):
     active_menu = 'people'
 
     def get(self, request, *args, **kwargs):
-        return render(self.request, 'list_people_page.html', {'active': self.active_menu})
+        context = {'active': self.active_menu}
+        return render(self.request, 'list_people_page.html', context)
