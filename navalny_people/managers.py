@@ -21,5 +21,5 @@ class PeopleManager(BaseUserManager):
         person = self.create_person(email, first_name, last_name, None, password)
         person.is_superuser = True
         person.set_password(password)
-        person.save(update_fields=['is_superuser'])
+        person.save(update_fields=['is_superuser', 'password'])
         return person

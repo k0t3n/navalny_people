@@ -84,6 +84,10 @@ class Person(AbstractBaseUser, PermissionsMixin):
 
     objects = PeopleManager()
 
+    @property
+    def is_staff(self):
+        return self.is_superuser
+
     def get_full_name(self):
         return '{} {}'.format(self.first_name, self.last_name)
 
