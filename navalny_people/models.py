@@ -32,8 +32,9 @@ class Person(models.Model):
         verbose_name='фамилия',
     )
     email = models.EmailField(
-        verbose_name='E-mail'
-    )  # TODO поля
+        verbose_name='E-mail',
+        blank=True, null=True
+    )
     location = models.ForeignKey(
         'geodata.GeoCoding',
         related_name='person_geodata',
@@ -42,8 +43,8 @@ class Person(models.Model):
     )
     profession = models.CharField(
         max_length=30,
-        verbose_name='профессия',
-        default=''
+        blank=True, null=True,
+        verbose_name='профессия'
     )
     story = models.TextField(
         verbose_name='биография'

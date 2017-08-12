@@ -1,9 +1,11 @@
+from django.core.files import File
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.urls import reverse
 from django.views.generic import (
     ListView, DetailView, CreateView
 )
+from navalny_people import utils
 
 from navalny_people.models import Person
 
@@ -47,7 +49,7 @@ class MainPage(ListView):
 
     def get_queryset(self):
         return self.model.objects. \
-                   select_related('address').order_by('?')[:25]
+                   select_related('location').order_by('?')[:25]
 
     def get(self, request, *args, **kwargs):
         persons = self.get_queryset()
@@ -108,6 +110,8 @@ class WriteAboutMe(ListView, CreateView):
                 if key in ('location', 'first_name', 'last_name',
                            'profession', 'donated_money', 'email', 'story'):
                     context[key] = value
+                if key in 'photo':
+                    context[key] = File(self.request.FILES.get(key))
         print(context)
         person = self.model.objects.create(**context)
         # person.save()
