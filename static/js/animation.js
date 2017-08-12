@@ -17,6 +17,17 @@ function duckAnimation() {
 $(document).ready(function () {
     setTimeout(function() {
         scroller.scrollTo('start', 500);
+        $('.count').each(function () {
+            $(this).prop('Counter',0).animate({
+                Counter: $(this).text()
+            }, {
+                duration: 3000,
+                easing: 'swing',
+                step: function (now) {
+                    $(this).text(Math.ceil(now));
+                }
+            });
+});
     }, 500);
     $('.how_it_works-item a').on('click', function () {
         if ($(this).next().css('display') === 'none') {
