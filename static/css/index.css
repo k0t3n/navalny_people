@@ -55,7 +55,7 @@ body {
 .navbar-brand .logo {
     position: relative;
     top: 30px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
     z-index: 2;
 }
 

@@ -1,8 +1,5 @@
 from django.conf.urls import url, include
-from navalny_people.views import (
-    AboutPage, PeoplePage, DetailProfilePage, MainPage,
-    ListProfilesPage
-)
+from navalny_people.views import *
 
 urlpatterns = [
     url(
@@ -17,16 +14,16 @@ urlpatterns = [
     ),
     url(
         r'^people/$',
-        PeoplePage.as_view(),
+        ListPeoplePage.as_view(),
         name='people_page'
     ),
     url(
         r'^person/', include([
-            url(
-                r'^$',
-                ListProfilesPage.as_view(),
-                name='list_persons'
-            ),
+            # url(
+            #     r'^$',
+            #     # TODO: шо тута???
+            #     name='list_persons'
+            # ),
             url(
                 r'^(?P<pk>\d+)/$',
                 DetailProfilePage.as_view(),
