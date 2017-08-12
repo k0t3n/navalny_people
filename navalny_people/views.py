@@ -78,7 +78,7 @@ class WriteAboutMe(ListView, CreateView):
     paginator_class = None
 
     def get(self, request, *args, **kwargs):
-        return render(self.request, 'write_about.html')
+        return render(self.request, 'write_form_page.html')
 
     def post(self, request, *args, **kwargs):
         user = self.request.user
