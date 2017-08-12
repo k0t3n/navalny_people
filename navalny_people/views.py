@@ -8,6 +8,10 @@ from django.views.generic import (
 from navalny_people.models import Person
 
 
+def page_not_found(request):
+    return render(request, '404.html')
+
+
 class Page404(ListView):
 
     def get(self, request, *args, **kwargs):
@@ -65,7 +69,9 @@ class DetailProfilePage(DetailView):
     def get(self, request, *args, **kwargs):
         person_id = kwargs['pk']
         if not self.queryset.filter(pk=person_id).exists():
-            return render(self.request, '404.html')
+            return HttpResponseRedirect(
+                reverse('404')
+            )
         person = self.get_queryset().get(pk=person_id)
         context = {
             'person': person

@@ -20,6 +20,9 @@ urlpatterns = [
         name='404'
     )
 ]
+
+handler404 = 'navalny_people.views.page_not_found'
+
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL,
                           document_root=settings.STATIC_ROOT)

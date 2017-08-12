@@ -469,8 +469,6 @@ body {
 }
 
 .story img {
-    position: relative;
-    top: -50px;
     border-radius: 100%;
 }
 
@@ -538,10 +536,6 @@ body {
     .flex-3 {
         text-align: end;
         min-width: 100%;
-    }
-
-    .flex-3 {
-
     }
 }
 
