@@ -400,7 +400,6 @@ body {
 
 .people_list img {
     border-radius: 100%;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 .item-image {
@@ -429,7 +428,7 @@ body {
 }
 
 .people_list-item {
-    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    box-shadow: 0 0 5px rgba(0,0,0,0.27);
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
