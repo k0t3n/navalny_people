@@ -383,10 +383,14 @@ body {
 
 /* PEOPLE_LIST START */
 .people_list-header {
-    /*временный маргин*/
-    margin-top: 248px;
     height: 155px;
     background: rgba(42, 87, 126, 0.65);
+}
+
+.people_list-header,
+.people_list {
+    position: relative;
+    top: -100px;
 }
 
 .people_list-item > div,
