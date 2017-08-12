@@ -1,6 +1,6 @@
 from django.db import models
 from imagekit.models import ProcessedImageField, ImageSpecField
-from imagekit.processors import ResizeToFit
+from imagekit.processors import ResizeToFill
 
 from navalny_people.managers import PeopleManager
 from navalny_people.utils import upload_to
@@ -21,7 +21,7 @@ class Person(models.Model):
         format='JPEG',
         options={'quality': 80},
         source='photo',
-        processors=[ResizeToFit(300, 300)]
+        processors=[ResizeToFill(300, 300)]
     )
     first_name = models.CharField(
         max_length=20,
