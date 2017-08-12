@@ -51,11 +51,11 @@
 
                     <div class="collapse navbar-collapse" id="nav_target">
                         <ul class="nav navbar-nav">
-                            <li class="active_link"><a href="{% url 'main_page' %}">Главная</a></li>
-                            <li><a href="{% url 'people_page' %}">Люди</a></li>
-                            <li><a href="#">Топ</a></li>
+                            <li {% if active == 'main' %}class="active_link"{% endif %}><a href="{% url 'main_page' %}">Главная</a></li>
+                            <li {% if active == 'people' %}class="active_link"{% endif %}><a href="{% url 'people_page' %}">Люди</a></li>
+                            <li {% if active == 'top' %}class="active_link"{% endif %}><a href="#">Топ</a></li>
                             <li><a href="#how_it_works">Как это работает</a></li>
-                            <li><a href="#">О нас</a></li>
+                            <li {% if active == 'about' %}class="active_link"{% endif %}><a href="#">О нас</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li>
@@ -73,6 +73,7 @@
 </header>
 
 <main>
+    <div class="background_wrapper"></div>
     {% block content %}{% endblock %}
 </main>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
