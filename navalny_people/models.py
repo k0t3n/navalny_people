@@ -40,6 +40,7 @@ class Person(models.Model):
     profession = models.CharField(
         max_length=30,
         verbose_name='профессия',
+        default=''
     )
     bio = models.TextField(
         verbose_name='биография'
