@@ -56,4 +56,4 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
 MEDIA_ROOT = os.path.join(BASE_DIR, 'files')
-GOOGLEMAPS_KEY = 'ALIdadfspidjfioj4j98h9p34h '
+GOOGLEMAPS_KEY = 'AIzaSyCi3dmQDG8mz6Mb6w1FzVXk-OvYfUvZE04'

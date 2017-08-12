@@ -1,9 +1,11 @@
+from django.core.files import File
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.urls import reverse
 from django.views.generic import (
     ListView, DetailView, CreateView
 )
+from navalny_people import utils
 
 from navalny_people.models import Person
 
@@ -47,7 +49,7 @@ class MainPage(ListView):
 
     def get_queryset(self):
         return self.model.objects. \
-                   select_related('address').order_by('?')[:25]
+                   select_related('location').order_by('?')[:25]
 
     def get(self, request, *args, **kwargs):
         persons = self.get_queryset()
@@ -105,23 +107,14 @@ class WriteAboutMe(ListView, CreateView):
         context = {}
         for key, value in self.request.POST.items():
             if key != '' or value is not None:
-                if key in 'region':
+                if key in ('location', 'first_name', 'last_name',
+                           'profession', 'donated_money', 'email', 'story'):
                     context[key] = value
-                elif key in 'first_name':
-                    context[key] = value
-                elif key in 'second_name':
-                    context[key] = value
-                elif key in 'profession':
-                    context[key] = value
-                elif key in 'donations':
-                    context[key] = value
-                elif key in 'email':
-                    context[key] = value
-                elif key in 'story':
-                    context[key] = value
+                if key in 'photo':
+                    context[key] = File(self.request.FILES.get(key))
         print(context)
-        # person = self.model.objects.create(**context)
-        # TODO: Stmh with person object
+        person = self.model.objects.create(**context)
+        # person.save()
         if len(context.keys()) == 0:
             return HttpResponseRedirect(
                 reverse('404')
