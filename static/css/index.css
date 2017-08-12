@@ -495,35 +495,70 @@ body {
 
 /* DETAIL_PEOPLE PAGE START */
 
-.profile_card {
-    background: #fff;
-    position: relative;
-    top: -100px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.10);
+/*TODO: XS ADAPTATION*/
+
+.background_blue {
+    background: url('../images/background_blue.png') no-repeat;
 }
 
-.profile_card h2 {
+.profile_container {
+    position: relative;
+    top: -180px;
+    /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.10);*/
+    /*padding-bottom: 70px;*/
+}
+
+.shadow-container {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.10);
+    background: #fff;
+}
+
+.profile_header-text h2 {
     font-family: Activist, 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 55px;
-    color: #0d7fa3;
+    color: #fff;
     margin-bottom: 0;
 }
 
-.profile_card p {
+.profile_header-text p {
     font-family: Exo2, 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 16px;
-    color: #999;
+    color: rgba(255, 255, 255, 0.60);
+    text-indent: 30px;
 }
 
-.profile_card img {
+.profile_img_link > div > img {
     position: relative;
     top: -50px;
     border-radius: 100%;
 }
 
+.social_icons-container {
+    padding: 30px 0 0 70px;
+}
+
+.social_icons-container > div {
+    height: inherit;
+}
+
+.social_icons-container > div > img {
+    margin-right: 10px;
+}
+
+.like_share-container {
+    padding: 30px 0 0 70px;
+}
+
+.like_share-container > div > img:first-child {
+    margin-right: 30px;
+}
+
 .profile_story {
-    padding: 70px;
-    background: rgba(231, 231, 231, 0.18);
+    padding: 20px 20px 70px 20px;
+    font-family: Exo2, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #999999;
+    font-size: 16px;
+    text-indent: 30px;
 }
 
 /* DETAIL_PEOPLE PAGE END */
