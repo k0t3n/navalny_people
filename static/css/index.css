@@ -8,6 +8,11 @@
     src: url('../fonts/Activist.ttf');
 }
 
+@font-face {
+    font-family: Intro;
+    src: url('../fonts/Intro.otf');
+}
+
 
 body {
     font-family: 'Activist','Helvetica Neue',Helvetica,Arial,sans-serif;
@@ -381,85 +386,6 @@ body {
 /* HOWITWORKS END */
 
 /* PEOPLE_LIST START */
-.people_list-header {
-    height: 155px;
-    background: rgba(42, 87, 126, 0.65);
-}
-
-.people_list-header,
-.people_list {
-    position: relative;
-    top: -100px;
-}
-
-.people_list-item > div,
-.people_list-item > div > div {
-    height: 95px;
-}
-
-.people_list img {
-    border-radius: 100%;
-}
-
-.item-image {
-    padding: 20px 0 0 20px;
-}
-
-.item-name {
-    padding: 21px 0 0 20px;
-}
-
-.item-name h4 {
-    color: #0d7fa3;
-    margin-bottom: 0;
-}
-
-.item-name p,
-.item-story p {
-    font-family: Exo2, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    color: #999999;
-}
-
-.item-story h3 {
-    color: #0d7fa3;
-    margin: 0 0 5px 0;
-}
-
-.people_list-item {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.10);
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin-bottom: 13px;
-}
-
-.flex-1 {
-    display: flex;
-    min-width: 25%;
-}
-
-.flex-2 {
-    padding: 20px 0 0 20px;
-    border: 1px solid #999999;
-    border-top: none;
-    border-bottom: none;
-    min-width: 50%;
-}
-
-.flex-2 > div {
-    height: 150px;
-}
-
-.flex-3 {
-    padding: 30px 0 0 90px;
-    min-width: 20%;
-}
-
-.flex-3 span {
-    font-size: 20px;
-    margin: 10px;
-}
 
 .text_on_input {
     background: #fff;
@@ -663,6 +589,79 @@ body {
 
 /* DETAIL_PEOPLE PAGE END */
 
+/* MAIN PAGE TOP START */
+
+.top_people-header {
+    height: 148px;
+    background: #999999;
+}
+
+.top_people {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.top_people > div {
+    min-width: 48%;
+    display: flex;
+    flex-direction: column;
+}
+
+.top_people-person {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.10);
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.place {
+    min-width: 20%;
+}
+
+.place div {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.place h1 {
+    font-family: Intro, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 50px;
+}
+
+.person-photo {
+    border-right: 1px solid rgba(0, 0, 0, 0.10);
+    border-left: 1px solid rgba(0, 0, 0, 0.10);
+    padding-top: 10px;
+}
+
+.person-photo img {
+    border-radius: 100%;
+}
+
+.person-info {
+    padding: 20px;
+    min-width: 80%;
+}
+
+.person-info h3 {
+    font-family: Activist, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #0d7fa3;
+    margin: 0;
+}
+
+.person-info p {
+    font-family: Exo2, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #999999;
+    margin: 0;
+}
+
+
+/* MAIN PAGE TOP END */
+
 /* MEDIA START */
 
 @media (max-width: 991px) {
@@ -728,6 +727,11 @@ body {
         text-align: end;
         min-width: 100%;
     }
+
+    .top_people {
+        flex-direction: column;
+        justify-content: space-between;
+}
 }
 
 @media (max-width: 768px) {
