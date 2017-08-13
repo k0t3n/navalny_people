@@ -29,8 +29,10 @@
                     </div>
                     <div class="col-lg-8 col-md-8 col-sm-7 col-xs-12 social_icons-container">
                         <div>
-                            <img src="{% static '/images/icons/vk.svg' %}"
+                            <a href="https://vk.com/id{{ person.uid }}">
+                                <img src="{% static '/images/icons/vk.svg' %}"
                                  alt="vk">
+                            </a>
                             <img src="{% static '/images/icons/facebook.svg' %}"
                                  alt="facebook">
                             <img src="{% static '/images/icons/telegram.svg' %}"
