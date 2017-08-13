@@ -1,3 +1,4 @@
+from django.contrib import auth
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.urls import reverse
@@ -6,6 +7,16 @@ from django.views.generic import (
 )
 from navalny_people.models import Person
 from navalny_people.utils import decode_address_by_googlemaps, GeoCodeResponse
+
+
+class Login(CreateView):
+
+    def get(self, request, *args, **kwargs):
+        pass
+    # Понятия не имею, зачем ты сделал отдельный запрос тех данных,
+    # которые мы получаем при авторизации через вк. Аналогично не имею понятия как нам использовать
+    # стандартный auth.authenticate(), когда у нас нет username (абстрактная модель пользователя), а
+    # email пользователя нам не присылает.
 
 
 def page_not_found(request):
