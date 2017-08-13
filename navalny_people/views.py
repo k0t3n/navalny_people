@@ -90,17 +90,18 @@ class DetailProfilePage(DetailView):
     :param request:
     :return:
     """
+    model = Person
 
     def get_queryset(self):
         return self.model.objects.all()
 
     def get(self, request, *args, **kwargs):
         person_id = kwargs['pk']
-        if not Person.objects.filter(id=person_id):
+        if not self.get_queryset().filter(id=person_id):
             return HttpResponseRedirect(
                 reverse('404')
             )
-        person = Person.objects.get(id=person_id)
+        person = self.get_queryset().get(id=person_id)
         person.town = GeoCodeResponse(
             person, '', ['political_town']
         )
