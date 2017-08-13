@@ -4,6 +4,7 @@ from core.settings_local import *
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '-)agk^!pxbcf9&krm@rr&)=&%0sh0rst!b5$fwvbkpt0w_+p3-'
+AUTH_USER_MODEL = 'navalny_people.Person'
 INSTALLED_APPS = [
     # Admin apps
     'suit',
@@ -56,4 +57,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 #     os.path.join(BASE_DIR, "static"),
 # )
 MEDIA_ROOT = os.path.join(BASE_DIR, 'files')
-GOOGLEMAPS_KEY = 'ALIdadfspidjfioj4j98h9p34h '
+GOOGLEMAPS_KEY = 'AIzaSyCi3dmQDG8mz6Mb6w1FzVXk-OvYfUvZE04'
+VK_CLIENT_ID = '6093659'
+VK_SECRET_KEY = 'kTJuqF3GBO7UGtL4NlDJ'
+FACEBOOK_CLIENT_ID = '1581457421898430'
+FACEBOOK_SECRET_KEY = 'bae43ff92729c0674f317d3a3d5154fd'

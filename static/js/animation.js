@@ -15,6 +15,17 @@ function duckAnimation() {
 }
 
 $(document).ready(function () {
+     $('.count').each(function () {
+        $(this).prop('Counter',0).animate({
+            Counter: $(this).text()
+        }, {
+            duration: 3000,
+            easing: 'swing',
+            step: function (now) {
+                $(this).text(Math.ceil(now));
+            }
+        });
+    });
     setTimeout(function() {
         scroller.scrollTo('start', 500);
     }, 500);
@@ -26,5 +37,5 @@ $(document).ready(function () {
             $(this).next().slideToggle('400');
             $(this).find('span').rotate(0);
         }
-    });
+    })
 });
