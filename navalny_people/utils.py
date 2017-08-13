@@ -96,7 +96,7 @@ def GeoCodeResponse(pk, output_data, fields=[]):
     :return: response dict with geo data
     """
     geo = GeoCoding.objects.prefetch_related('lang_address_geocode'). \
-        filter(**{'user_location': pk}). \
+        filter(**{'person_geodata': pk}). \
         values('lang_address_geocode__political_town',
                'lang_address_geocode__political_area',
                'lang_address_geocode__street_number',
@@ -105,7 +105,6 @@ def GeoCodeResponse(pk, output_data, fields=[]):
                'lang_address_geocode__country',
                'lat', 'lon'). \
         first()
-
     if geo is not None:
         if type(output_data) is dict:
             geo_data = {}

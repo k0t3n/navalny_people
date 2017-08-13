@@ -1,13 +1,11 @@
-from django.core.files import File
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.urls import reverse
 from django.views.generic import (
     ListView, DetailView, CreateView
 )
-from navalny_people.utils import decode_address_by_googlemaps, upload_to
-
 from navalny_people.models import Person
+from navalny_people.utils import decode_address_by_googlemaps, GeoCodeResponse
 
 
 def page_not_found(request):
@@ -103,6 +101,9 @@ class DetailProfilePage(DetailView):
                 reverse('404')
             )
         person = Person.objects.get(id=person_id)
+        person.town = GeoCodeResponse(
+            person, '', ['political_town']
+        )
         context = {
             'person': person
         }
