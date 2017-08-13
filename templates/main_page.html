@@ -9,8 +9,8 @@
     <!-- Scroller start -->
 
     <div class="background_text">
-            <p>Своей историей уже</p>
-            <h2>Поделились</h2>
+        <p>Своей историей уже</p>
+        <h2>Поделились</h2>
     </div>
 
     <div class="scroller_wrapper">
@@ -18,32 +18,101 @@
             {% for person in persons %}
                 <a href="{% url 'detail_person' person.pk %}"
                    class="animation-{{ person.position }}">
-                    <img src="{{ person.preview.url }}"  width="100px" height="100px"/>
+                    <img src="{{ person.avatar }}" width="100px"
+                         height="100px"/>
                 </a>
             {% endfor %}
         </div>
         <div class="wrapper">
             <div class="counter container-fluid">
-                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2">
-                        <h2><span class="count">769</span></h2>
-                        <p>Знаменитостей</p>
+                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2">
+                    <h2><span class="count">769</span></h2>
+                    <p>Знаменитостей</p>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                    <h2><span class="count">42</span> мл.</h2>
+                    <p>Пожертвовано</p>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                    <h2><span class="count">571</span> тыс.</h2>
+                    <p>Волонтеров</p>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                    <h2><span class="count">82</span> тыс.</h2>
+                    <p>Уникальных историй</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <div class="top_page-header">
+            <h2>Топ-10</h2>
+            <p>за последний месяц</p>
+        </div>
+        <div class="top_people">
+            <div class="left-side">
+                {% for top10 in tops5left %}
+                    <div class="top_people-person">
+                        <div class="place">
+                            <div>
+                                <h1>{{ top10.score }}</h1>
+                            </div>
+                        </div>
+                        <div class="person-photo">
+                            <img src="{{ top10.avatar }}" width="100"
+                                 height="100" alt="photo">
+                        </div>
+                        <div class="person-info">
+                            <a href="{% url 'detail_person' top10.pk %}">
+                                <h3>{{ top10.first_name }}
+                                    {{ top10.last_name }}</h3>
+                            </a>
+                            <p>
+                                {% if top10.profession %}
+                                    {{ top10.profession }},
+                                {% endif %}
+                                {% if top10.location %}
+                                    г. {{ top10.location }}
+                                {% endif %}
+                            </p>
+                        </div>
                     </div>
-                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                        <h2><span class="count">42</span> мл.</h2>
-                        <p>Пожертвовано</p>
+                {% endfor %}
+            </div>
+            <div class="right-side">
+                {% for top10 in tops5rights %}
+                    <div class="top_people-person">
+                        <div class="place">
+                            <div>
+                                <h1>{{ top10.score }}</h1>
+                            </div>
+                        </div>
+                        <div class="person-photo">
+                            <img src="{{ top10.avatar }}" width="100"
+                                 height="100" alt="photo">
+                        </div>
+                        <div class="person-info">
+                            <a href="{% url 'detail_person' top10.pk %}">
+                                <h3>{{ top10.first_name }}
+                                    {{ top10.last_name }}</h3>
+                            </a>
+                            <p>
+                                {% if top10.profession %}
+                                    {{ top10.profession }},
+                                {% endif %}
+                                {% if top10.location %}
+                                    г. {{ top10.location }}
+                                {% endif %}
+                            </p>
+                        </div>
                     </div>
-                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                        <h2><span class="count">571</span> тыс.</h2>
-                        <p>Волонтеров</p>
-                    </div>
-                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                        <h2><span class="count">82</span> тыс.</h2>
-                        <p>Уникальных историй</p>
-                    </div>
+                {% endfor %}
             </div>
         </div>
     </div>
 
     <!-- Scroller end -->
 {% endblock %}
-{% block custom_js %}<script src="{% static 'js/animation.js' %}"></script>{% endblock %}
+{% block custom_js %}
+    <script src="{% static 'js/animation.js' %}"></script>{% endblock %}

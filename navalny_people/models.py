@@ -17,6 +17,10 @@ class Person(AbstractBaseUser, PermissionsMixin):
         (VK, 'VKontakte'),
         (FB, 'FaceBook')
     )
+    uid = models.CharField(
+        max_length=80,
+        unique=True
+    )
     photo = ProcessedImageField(
         upload_to=upload_to,
         format='JPEG',
@@ -38,7 +42,7 @@ class Person(AbstractBaseUser, PermissionsMixin):
         verbose_name='фамилия',
     )
     email = models.EmailField(
-        unique=True,
+        blank=True, null=True,
         verbose_name='E-mail'
     )
     social_type = models.PositiveSmallIntegerField(
@@ -46,7 +50,7 @@ class Person(AbstractBaseUser, PermissionsMixin):
         choices=SOCIAL_TYPE,
         verbose_name='тип социальной сети'
     )
-    location = models.ForeignKey(
+    address = models.ForeignKey(
         'geodata.GeoCoding',
         related_name='person_geodata',
         verbose_name='геодата пользователя',
@@ -78,9 +82,15 @@ class Person(AbstractBaseUser, PermissionsMixin):
         default=False,
         verbose_name='Проверен'
     )
+    likes = models.ManyToManyField(
+        'self',
+        related_name='likes_person',
+        related_query_name='likes_person_rel',
+        blank=True, null=True
+    )
 
     REQUIRED_FIELDS = ['last_name', 'first_name']
-    USERNAME_FIELD = 'email'
+    USERNAME_FIELD = 'uid'
 
     objects = PeopleManager()
 
@@ -101,7 +111,7 @@ class Person(AbstractBaseUser, PermissionsMixin):
         return True
 
     def get_short_name(self):
-        return f'{self.first_name, self.last_name[0]}'
+        return '{} {}.'.format(self.first_name, self.last_name[0])
 
     def __str__(self):
         return self.get_short_name()

@@ -4,21 +4,31 @@ from django.utils import timezone
 
 class PeopleManager(BaseUserManager):
 
-    def create_person(self, email, first_name, last_name, bio, password):
+    def create_person(self, first_name, last_name, photo=None, email=None, uid=None,
+                      social_type=None, story=None, password=None):
         data = {
+            'photo': photo,
             'email': email,
+            'uid': uid,
+            'social_type': self.model.VK
+            if social_type is None else social_type,
             'first_name': first_name,
             'date_register': timezone.now(),
             'last_name': last_name,
+            'password': password,
         }
-        data.update({'bio': bio}) if bio is not None else False
+        data.update({'story': story}) if story is not None else False
         person = self.model.objects.create(**data)
-        person.set_unusable_password()
+        if password:
+            person.set_password(password)
+        else:
+            person.set_unusable_password()
         person.save(update_fields=['password'])
         return person
 
-    def create_superuser(self, email, first_name, last_name, password):
-        person = self.create_person(email, first_name, last_name, None, password)
+    def create_superuser(self, uid, first_name, last_name, password):
+        person = self.create_person(uid=uid, first_name=first_name,
+                                    last_name=last_name, password=password)
         person.is_superuser = True
         person.set_password(password)
         person.save(update_fields=['is_superuser', 'password'])

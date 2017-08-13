@@ -1,12 +1,18 @@
 @font-face {
+    font-family: Exo2;
+    src: url('../fonts/Exo2.otf');
+}
+
+@font-face {
     font-family: Activist;
     src: url('../fonts/Activist.ttf');
 }
 
 @font-face {
-    font-family: Exo2;
-    src: url('../fonts/Exo2.otf');
+    font-family: Intro;
+    src: url('../fonts/Intro.otf');
 }
+
 
 body {
     font-family: 'Activist','Helvetica Neue',Helvetica,Arial,sans-serif;
@@ -103,7 +109,6 @@ body {
     height: inherit;
     padding: 12px 20px;
     border: 1px solid #0d7fa3;
-    border-radius: 3px;
 }
 
 .navbar .nav .header_button:hover {
@@ -119,7 +124,6 @@ body {
     height: inherit;
     padding: 12px 20px;
     border: 1px solid #0d7fa3;
-    border-radius: 3px;
     display: none;
 }
 
@@ -356,7 +360,7 @@ body {
     font-weight: 300;
     text-decoration: none;
     display: block;
-    border: 1px solid #0d7fa3;
+    border: 1px solid #999999;
     width: 100%;
 }
 
@@ -382,85 +386,66 @@ body {
 /* HOWITWORKS END */
 
 /* PEOPLE_LIST START */
-.people_list-header {
-    height: 155px;
-    background: rgba(42, 87, 126, 0.65);
-}
 
-.people_list-header,
-.people_list {
+.text_on_input {
+    background: #fff;
     position: relative;
-    top: -100px;
+    top: 20px;
+    z-index: 2;
 }
 
-.people_list-item > div,
-.people_list-item > div > div {
-    height: 95px;
+.container-list {
+    margin-top: 30px;
 }
 
-.people_list img {
+.container-list img {
     border-radius: 100%;
 }
 
-.item-image {
-    padding: 20px 0 0 20px;
-}
-
-.item-name {
-    padding: 21px 0 0 20px;
-}
-
-.item-name h4 {
-    color: #0d7fa3;
-    margin-bottom: 0;
-}
-
-.item-name p,
-.item-story p {
-    font-family: Exo2, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    color: #999999;
-}
-
-.item-story h3 {
-    color: #0d7fa3;
-    margin: 0 0 5px 0;
-}
-
-.people_list-item {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.10);
+.first-row {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    margin-bottom: 13px;
+    justify-content: space-around;
+    position: relative;
+    right: -40px;
 }
 
-.flex-1 {
+.second-row {
+    position: relative;
+    right: 70px;
+    top: -40px;
     display: flex;
-    min-width: 25%;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
-.flex-2 {
-    padding: 20px 0 0 20px;
-    border: 1px solid #999999;
-    border-top: none;
-    border-bottom: none;
-    min-width: 60%;
+.third-row {
+    position: relative;
+    top: -80px;
+    right: -50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
-.flex-2 > div {
-    height: 150px;
+.fourth-row {
+    position: relative;
+    top: -120px;
+    right: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
-.flex-3 {
-    padding: 30px 0 0 20px;
-    min-width: 15%;
+.fifth-row {
+    position: relative;
+    top: -170px;
+    right: -40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
-.flex-3 span {
-    font-size: 20px;
-    margin: 10px;
-}
 /* PEOPLE_LIST END */
 
 /* STORY START */
@@ -584,6 +569,175 @@ body {
 
 /* DETAIL_PEOPLE PAGE END */
 
+/* MAIN PAGE TOP START */
+
+.top_page-header {
+    margin: 0 0 50px 0;
+    color: black;
+    text-align: center;
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+.top_page-header p {
+    font-family: Exo2, 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    color: #999999;
+}
+
+.top_people {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.top_people > div {
+    min-width: 48%;
+    display: flex;
+    flex-direction: column;
+}
+
+.top_people-person {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.10);
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.place {
+    min-width: 20%;
+}
+
+.place div {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.place h1 {
+    font-family: Intro, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 50px;
+}
+
+.person-photo {
+    border-right: 1px solid rgba(0, 0, 0, 0.10);
+    border-left: 1px solid rgba(0, 0, 0, 0.10);
+    padding: 10px;
+}
+
+.person-photo img {
+    border-radius: 100%;
+}
+
+.person-info {
+    padding: 20px;
+    min-width: 80%;
+}
+
+.person-info h3 {
+    font-family: Activist, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #0d7fa3;
+    margin: 0;
+}
+
+.person-info p {
+    font-family: Exo2, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #999999;
+    margin: 0;
+}
+
+
+/* MAIN PAGE TOP END */
+
+/* PEOPLE LIST START */
+
+.people_list {
+    position: relative;
+    top: -100px;
+}
+
+.people_list-item {
+    background: #fff;
+    padding: 15px 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.10);
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-1 {
+    padding-left: 20px;
+    margin: 10px 0 0 0;
+    display: flex;
+    min-width: 30%;
+}
+
+.flex-1-1 {
+    min-width: 30%;
+}
+
+.flex-1-2 {
+    min-width: 70%;
+}
+
+.flex-1-2 div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.flex-1 img {
+    border-radius: 100%;
+}
+
+.flex-1 h4 {
+    font-family: Activist, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #0d7fa3;
+    margin: 5px 0 0 0;
+}
+
+.flex-2 {
+    min-width: 60%;
+    padding-left: 20px;
+}
+
+.flex-2 h3 {
+    padding: 30px 0 0 20px;
+    font-family: Activist, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #0d7fa3;
+    margin: 0;
+}
+
+.flex-2 p {
+    font-family: Exo2, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #999;
+    padding-left: 20px;
+}
+
+.item-name {
+    margin: 10px 0 0 20px;
+}
+
+.flex-3 {
+    min-width: 10%;
+}
+
+.flex-3 div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/* PEOPLE LIST END */
+
 /* MEDIA START */
 
 @media (max-width: 991px) {
@@ -649,6 +803,17 @@ body {
         text-align: end;
         min-width: 100%;
     }
+
+    .top_people {
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .wrapper .form-header {
+        position: static !important;
+        top: 0;
+        margin-top: 120px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -676,6 +841,11 @@ body {
     .navbar-brand .duck {
         display: none;
     }
+
+
+    .text_on_input {
+        position: static;
+    }
 }
 
 @media (max-width: 505px) {
@@ -690,6 +860,10 @@ body {
 
     .how_it_works {
         max-width: 300px;
+    }
+
+    .top_people {
+        display: none;
     }
 }
 
@@ -784,3 +958,56 @@ body {
 }
 
 /* ANIMATIONS END */
+
+/* MODAL START */
+
+.modalDialog {
+	position: fixed;
+	font-family: Exo2, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.8);
+	z-index: 99999;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	display: none;
+	pointer-events: none;
+}
+
+.modalDialog:target {
+	display: block;
+	pointer-events: auto;
+}
+
+.modalDialog > div {
+	width: 400px;
+	position: relative;
+	margin: 10% auto;
+	padding: 5px 20px 13px 20px;
+	background: #fff;
+}
+
+.close {
+	background: #606061;
+	color: #FFFFFF;
+	line-height: 25px;
+	position: absolute;
+	right: -12px;
+	text-align: center;
+	top: -10px;
+	width: 24px;
+	text-decoration: none;
+	border-radius: 12px;
+	box-shadow: 1px 1px 3px rgba(70, 70, 70, 0.74);
+}
+
+.close:hover { background: #00d9ff; }
+
+#vk_auth {
+    margin: 0 auto;
+}
+
+/* MODAL END */
