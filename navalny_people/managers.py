@@ -13,7 +13,10 @@ class PeopleManager(BaseUserManager):
         }
         data.update({'bio': bio}) if bio is not None else False
         person = self.model.objects.create(**data)
-        person.set_unusable_password()
+        if password:
+            person.set_password(password)
+        else:
+            person.set_unusable_password()
         person.save(update_fields=['password'])
         return person
 

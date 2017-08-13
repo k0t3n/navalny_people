@@ -17,6 +17,10 @@ class Person(AbstractBaseUser, PermissionsMixin):
         (VK, 'VKontakte'),
         (FB, 'FaceBook')
     )
+    uid = models.CharField(
+        max_length=10,
+        default=''
+    )
     photo = ProcessedImageField(
         upload_to=upload_to,
         format='JPEG',
