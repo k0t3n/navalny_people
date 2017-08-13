@@ -394,26 +394,6 @@ body {
     z-index: 2;
 }
 
-.people_list-item:first-child .flex-3 {
-    background: url('../images/number1.png') no-repeat right;
-    background-size: cover;
-}
-
-.people_list-item:nth-child(2) .flex-3 {
-    background: url('../images/number2.png') no-repeat right;
-    background-size: cover;
-}
-
-.people_list-item:nth-child(3) .flex-3 {
-    background: url('../images/number3.png') no-repeat right;
-    background-size: cover;
-}
-
-.people_list-item:nth-child(4) .flex-3 {
-    background: url('../images/number4.png') no-repeat right;
-    background-size: cover;
-}
-
 .container-list {
     margin-top: 30px;
 }
@@ -591,9 +571,19 @@ body {
 
 /* MAIN PAGE TOP START */
 
-.top_people-header {
-    height: 148px;
-    background: #999999;
+.top_page-header {
+    margin: 0 0 50px 0;
+    color: black;
+    text-align: center;
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+.top_page-header p {
+    font-family: Exo2, 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    color: #999999;
 }
 
 .top_people {
@@ -661,6 +651,92 @@ body {
 
 
 /* MAIN PAGE TOP END */
+
+/* PEOPLE LIST START */
+
+.people_list {
+    position: relative;
+    top: -100px;
+}
+
+.people_list-item {
+    background: #fff;
+    padding: 15px 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.10);
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-1 {
+    padding-left: 20px;
+    margin: 10px 0 0 0;
+    display: flex;
+    min-width: 30%;
+}
+
+.flex-1-1 {
+    min-width: 30%;
+}
+
+.flex-1-2 {
+    min-width: 70%;
+}
+
+.flex-1-2 div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.flex-1 img {
+    border-radius: 100%;
+}
+
+.flex-1 h4 {
+    font-family: Activist, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #0d7fa3;
+    margin: 5px 0 0 0;
+}
+
+.flex-2 {
+    min-width: 60%;
+    padding-left: 20px;
+}
+
+.flex-2 h3 {
+    padding: 30px 0 0 20px;
+    font-family: Activist, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #0d7fa3;
+    margin: 0;
+}
+
+.flex-2 p {
+    font-family: Exo2, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #999;
+    padding-left: 20px;
+}
+
+.item-name {
+    margin: 10px 0 0 20px;
+}
+
+.flex-3 {
+    min-width: 10%;
+}
+
+.flex-3 div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/* PEOPLE LIST END */
 
 /* MEDIA START */
 
@@ -731,7 +807,13 @@ body {
     .top_people {
         flex-direction: column;
         justify-content: space-between;
-}
+    }
+
+    .wrapper .form-header {
+        position: static !important;
+        top: 0;
+        margin-top: 120px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -778,6 +860,10 @@ body {
 
     .how_it_works {
         max-width: 300px;
+    }
+
+    .top_people {
+        display: none;
     }
 }
 
@@ -872,3 +958,52 @@ body {
 }
 
 /* ANIMATIONS END */
+
+/* MODAL START */
+
+.modalDialog {
+	position: fixed;
+	font-family: Exo2, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.8);
+	z-index: 99999;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	display: none;
+	pointer-events: none;
+}
+
+.modalDialog:target {
+	display: block;
+	pointer-events: auto;
+}
+
+.modalDialog > div {
+	width: 400px;
+	position: relative;
+	margin: 10% auto;
+	padding: 5px 20px 13px 20px;
+	background: #fff;
+}
+
+.close {
+	background: #606061;
+	color: #FFFFFF;
+	line-height: 25px;
+	position: absolute;
+	right: -12px;
+	text-align: center;
+	top: -10px;
+	width: 24px;
+	text-decoration: none;
+	border-radius: 12px;
+	box-shadow: 1px 1px 3px rgba(70, 70, 70, 0.74);
+}
+
+.close:hover { background: #00d9ff; }
+
+/* MODAL END */

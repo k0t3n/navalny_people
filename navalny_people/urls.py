@@ -2,7 +2,7 @@ from django.conf.urls import url, include
 from navalny_people.views import (
     MainPage, AboutPage, ListPeoplePage,
     WriteAboutMe, DetailProfilePage,
-    RandomPersons)
+    RandomPersons, Login)
 
 
 urlpatterns = [
@@ -44,5 +44,10 @@ urlpatterns = [
                 name='detail_person'
             )
         ])
-    )
+    ),
+    url(
+        r'^login/$',
+        Login.as_view(),
+        name='login'
+    ),
 ]

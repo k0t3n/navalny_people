@@ -17,6 +17,8 @@
     <link href="{% static 'css/index.css' %}" rel="stylesheet">
     <!-- Icon -->
     <link rel="icon" href="{% static 'images/logo.png' %}">
+    <!-- Vk Auth -->
+    <script type="text/javascript" src="//vk.com/js/api/openapi.js?146"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -25,6 +27,9 @@
     <![endif]-->
 </head>
 <body>
+<script type="text/javascript">
+  VK.init({apiId: 6146935});
+</script>
 <header>
     <!-- Navbar start -->
         <nav class="navbar navbar-default navbar-fixed-top">
@@ -45,7 +50,7 @@
                                  onclick="duckAnimation(); return false">
                             <img alt="duck" src="{% static 'images/duck.png' %}" class="img-responsive duck">
                         </a>
-                        <a href="#form" class="mobile_button">Написать о себе</a>
+                        <a href="{% url 'write_page' %}" class="mobile_button">Написать о себе</a>
                     </div>
 
                     <div class="collapse navbar-collapse" id="nav_target">
@@ -55,6 +60,9 @@
                             <li {% if active == 'about' %}class="active_link"{% endif %}><a href="{% url 'about_page' %}">Как это работает</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="#openModal">Enter</a>
+                            </li>
                             <li>
                                 <a href="{% url 'write_page' %}" class="header_button">
                                     Написать о себе
@@ -69,6 +77,13 @@
     <!-- Navbar end -->
 </header>
 
+<div id="openModal" class="modalDialog">
+    <div>
+        <a href="#close" title="Закрыть" class="close">X</a>
+        <div id="vk_auth"></div>
+    </div>
+</div>
+
 <main>
     {% block content %}{% endblock %}
 </main>
@@ -82,6 +97,9 @@
 <!-- Google -->
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script type="text/javascript">
+    VK.Widgets.Auth("vk_auth", {authUrl: '/login/'});
+</script>
 {% block custom_js %}{% endblock %}
 </body>
 </html>

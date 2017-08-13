@@ -17,6 +17,10 @@ class Person(AbstractBaseUser, PermissionsMixin):
         (VK, 'VKontakte'),
         (FB, 'FaceBook')
     )
+    uid = models.CharField(
+        max_length=10,
+        default=''
+    )
     photo = ProcessedImageField(
         upload_to=upload_to,
         format='JPEG',
@@ -77,6 +81,12 @@ class Person(AbstractBaseUser, PermissionsMixin):
     moderated = models.BooleanField(
         default=False,
         verbose_name='Проверен'
+    )
+    likes = models.ManyToManyField(
+        'self',
+        related_name='likes_person',
+        related_query_name='likes_person_rel',
+        blank=True, null=True
     )
 
     REQUIRED_FIELDS = ['last_name', 'first_name']

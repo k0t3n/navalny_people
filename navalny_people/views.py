@@ -1,11 +1,24 @@
+from django.contrib import auth
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.urls import reverse
+from django.utils.decorators import method_decorator
 from django.views.generic import (
     ListView, DetailView, CreateView
 )
 from navalny_people.models import Person
 from navalny_people.utils import decode_address_by_googlemaps, GeoCodeResponse
+
+
+class Login(ListView):
+
+    def get(self, request, *args, **kwargs):
+        pass
+    # Понятия не имею, зачем ты сделал отдельный запрос тех данных,
+    # которые мы получаем при авторизации через вк. Аналогично не имею понятия как нам использовать
+    # стандартный auth.authenticate(), когда у нас нет username (абстрактная модель пользователя), а
+    # email пользователя нам не присылает.
 
 
 def page_not_found(request):
@@ -70,6 +83,23 @@ class MainPage(ListView):
             'active': self.active_menu
         }
         return render(self.request, 'main_page.html', context=context)
+
+
+class LikePersonView(ListView):
+    model = Person
+
+    @method_decorator(login_required)
+    def get(self, request, *args, **kwargs):
+        user = self.request.user
+        person_id = self.request.GET.get('id')
+        person = Person.objects.filter(pk=person_id).last()
+        if person in user.likes.all():
+            user.likes.remove(person)
+        else:
+            user.likes.add(person)
+        return HttpResponseRedirect(
+            reverse('main_page')
+        )
 
 
 class AboutPage(ListView):
