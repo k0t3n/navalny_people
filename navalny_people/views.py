@@ -1,5 +1,6 @@
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import AnonymousUser
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.urls import reverse
@@ -183,6 +184,7 @@ class WriteAboutMe(ListView, CreateView):
 
     def post(self, request, *args, **kwargs):
         context = {}
+        user = self.request.user
         for key, value in self.request.POST.items():
             if key != '' or value is not None:
                 if key in ('address', 'first_name', 'last_name',
@@ -190,10 +192,17 @@ class WriteAboutMe(ListView, CreateView):
                     context[key] = value
                 elif key in 'location':
                     context['address'] = decode_address_by_googlemaps(value)
-        context['photo'] = self.request.FILES.get('photo')
-        person = Person.objects.create(**context)
-        person.set_unusable_password()
-        person.save(update_fields=['password'])
+        if 'photo' in self.request.FILES:
+            context['photo'] = self.request.FILES.get('photo')
+        if user == AnonymousUser():
+            person = Person.objects.create(**context)
+            person.set_unusable_password()
+            person.save(update_fields=['password'])
+        for k, v in context.items():
+            if k in 'location':
+                setattr(user, k, v)
+            setattr(user, k, v)
+            user.save(update_fields=context.keys())
         if len(context.keys()) == 0:
             return HttpResponseRedirect(
                 reverse('404')
