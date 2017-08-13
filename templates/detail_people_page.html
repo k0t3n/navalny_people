@@ -6,48 +6,54 @@
 {% block content %}
     <div class="background_wrapper background_blue"></div>
 
-<div class="wrapper profile_container">
-    <div class="row profile_header-text">
-        <div class="text-right col-md-12">
-            <h2>{{ person.get_full_name }}</h2>
-            <p>
-                {% if person.town %}
-                    г. {{ person.town }},
-                {% endif %}
-                {% if person.profession %}
-                    {{ person.profession }}
-                {% endif %}
-            </p>
+    <div class="wrapper profile_container">
+        <div class="row profile_header-text">
+            <div class="text-right col-md-12">
+                <h2>{{ person.get_full_name }}</h2>
+                <p>
+                    {% if person.profession %}
+                        {{ person.profession }},
+                    {% endif %}
+                    {% if person.town %}
+                        г. {{ person.town }}
+                    {% endif %}
+                </p>
+            </div>
         </div>
-    </div>
-    <div class="shadow-container row">
-        <div class="row">
-            <div class="profile_img_link col-md-12">
-                <div class="col-md-1 col-sm-1 col-xs-10 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
-                    <img src="{{ person.avatar }}" alt="photo" width="120"
-                         height="120">
-                </div>
-                <div class="col-lg-8 col-md-8 col-sm-7 col-xs-12 social_icons-container">
-                    <div>
-                        <img src="{% static '/images/icons/vk.svg' %}" alt="vk">
-                        <img src="{% static '/images/icons/facebook.svg' %}" alt="facebook">
-                        <img src="{% static '/images/icons/telegram.svg' %}" alt="telegram">
-                        <img src="{% static '/images/icons/twitter.svg' %}" alt="twitter">
+        <div class="shadow-container row">
+            <div class="row">
+                <div class="profile_img_link col-md-12">
+                    <div class="col-md-1 col-sm-1 col-xs-10 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+                        <img src="{{ person.avatar }}" alt="photo" width="120"
+                             height="120">
                     </div>
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 like_share-container">
-                    <div>
-                        <img src="{% static 'images/icons/navalny-like.svg' %}" alt="like">
-                        <img src="{% static 'images/icons/navalny-share.svg' %}" alt="share">
+                    <div class="col-lg-8 col-md-8 col-sm-7 col-xs-12 social_icons-container">
+                        <div>
+                            <img src="{% static '/images/icons/vk.svg' %}"
+                                 alt="vk">
+                            <img src="{% static '/images/icons/facebook.svg' %}"
+                                 alt="facebook">
+                            <img src="{% static '/images/icons/telegram.svg' %}"
+                                 alt="telegram">
+                            <img src="{% static '/images/icons/twitter.svg' %}"
+                                 alt="twitter">
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 like_share-container">
+                        <div>
+                            <img src="{% static 'images/icons/navalny-like.svg' %}"
+                                 alt="like">
+                            <img src="{% static 'images/icons/navalny-share.svg' %}"
+                                 alt="share">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    <div class="row">
-        <div class="profile_story col-md-6 col-sm-6 col-xs-6 col-md-offset-3 col-sm-offset-3 col-xs-offset-3">
-            <p>{{ person.story }}</p>
+            <div class="row">
+                <div class="profile_story col-md-6 col-sm-6 col-xs-6 col-md-offset-3 col-sm-offset-3 col-xs-offset-3">
+                    <p>{{ person.story }}</p>
+                </div>
+            </div>
         </div>
     </div>
-    </div>
-</div>
 {% endblock %}
