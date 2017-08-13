@@ -18,8 +18,8 @@ class Person(AbstractBaseUser, PermissionsMixin):
         (FB, 'FaceBook')
     )
     uid = models.CharField(
-        max_length=10,
-        default=''
+        max_length=80,
+        unique=True
     )
     photo = ProcessedImageField(
         upload_to=upload_to,
@@ -42,7 +42,7 @@ class Person(AbstractBaseUser, PermissionsMixin):
         verbose_name='фамилия',
     )
     email = models.EmailField(
-        unique=True,
+        blank=True, null=True,
         verbose_name='E-mail'
     )
     social_type = models.PositiveSmallIntegerField(
@@ -90,7 +90,7 @@ class Person(AbstractBaseUser, PermissionsMixin):
     )
 
     REQUIRED_FIELDS = ['last_name', 'first_name']
-    USERNAME_FIELD = 'email'
+    USERNAME_FIELD = 'uid'
 
     objects = PeopleManager()
 

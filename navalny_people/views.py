@@ -12,13 +12,39 @@ from navalny_people.utils import decode_address_by_googlemaps, GeoCodeResponse
 
 
 class Login(ListView):
+    model = Person
 
     def get(self, request, *args, **kwargs):
-        pass
-    # Понятия не имею, зачем ты сделал отдельный запрос тех данных,
-    # которые мы получаем при авторизации через вк. Аналогично не имею понятия как нам использовать
-    # стандартный auth.authenticate(), когда у нас нет username (абстрактная модель пользователя), а
-    # email пользователя нам не присылает.
+        first_name = request.GET.get('first_name')
+        last_name = request.GET.get('last_name')
+        uid = request.GET.get('uid')
+        photo = request.GET.get('photo')
+        user_hash = request.GET.get('hash')
+        if first_name and last_name and uid:  # проверяем, всё ли параметры к нам пришли
+            user = auth.authenticate(uid=uid, password=user_hash)  # если да, то пытаемся авторизоваться
+            if user is not None:
+                auth.login(request, user)
+                return HttpResponseRedirect(
+                    reverse('main_page')
+                )
+            else:  # если пользователя нет, то зарегистрируем
+                reg_user = self.model.objects.create_person(
+                    uid=uid,
+                    social_type=self.model.VK,
+                    first_name=first_name,
+                    last_name=last_name,
+                    password=user_hash,
+                    photo=photo,
+                )
+                auth.login(request, reg_user)
+                return HttpResponseRedirect(
+                    reverse('main_page')
+                )
+
+        else:
+            return HttpResponseRedirect(
+                    reverse('main_page')
+                )
 
 
 def page_not_found(request):
