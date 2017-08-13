@@ -112,6 +112,7 @@ class MainPage(ListView):
         tops10 = self.model.objects.prefetch_related('likes').\
             order_by('likes').all()
         for t, top10 in enumerate(tops10):
+            t += 1
             if 'http' in top10.photo.path:
                 top10.avatar = 'https://' + top10.photo.path[33:]
             else:
