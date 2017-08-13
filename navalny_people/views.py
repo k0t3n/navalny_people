@@ -5,7 +5,7 @@ from django.urls import reverse
 from django.views.generic import (
     ListView, DetailView, CreateView
 )
-from navalny_people.utils import decode_address_by_googlemaps
+from navalny_people.utils import decode_address_by_googlemaps, upload_to
 
 from navalny_people.models import Person
 
@@ -83,7 +83,7 @@ class AboutPage(ListView):
     active_menu = 'about'
 
     def get(self, request, *args, **kwargs):
-        return render(self.request, 'how_it_works.html', {'active': self.active_menu})
+        return render(self.request, 'how_it_works_page.html', {'active': self.active_menu})
 
 
 class DetailProfilePage(DetailView):
@@ -110,7 +110,6 @@ class DetailProfilePage(DetailView):
 
 
 class WriteAboutMe(ListView, CreateView):
-    model = Person
     paginator_class = None
 
     def get(self, request, *args, **kwargs):
@@ -124,7 +123,7 @@ class WriteAboutMe(ListView, CreateView):
                            'profession', 'donated_money', 'email', 'story'):
                     context[key] = value
                 elif key in 'photo':
-                    context[key] = File(self.request.FILES.get(key))
+                    context[key] = upload_to(None, File(self.request.FILES.get(key)))
                 elif key in 'address':
                     context[key] = decode_address_by_googlemaps(value)
         print(context)
