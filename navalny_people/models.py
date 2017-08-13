@@ -101,7 +101,7 @@ class Person(AbstractBaseUser, PermissionsMixin):
         return True
 
     def get_short_name(self):
-        return f'{self.first_name, self.last_name[0]}'
+        return '{} {}.'.format(self.first_name, self.last_name[0])
 
     def __str__(self):
         return self.get_short_name()
