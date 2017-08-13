@@ -731,7 +731,13 @@ body {
     .top_people {
         flex-direction: column;
         justify-content: space-between;
-}
+    }
+
+    .wrapper .form-header {
+        position: static !important;
+        top: 0;
+        margin-top: 120px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -778,6 +784,11 @@ body {
 
     .how_it_works {
         max-width: 300px;
+    }
+
+    .top_people,
+    .top_people-header {
+        display: none;
     }
 }
 

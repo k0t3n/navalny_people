@@ -45,7 +45,7 @@
                                  onclick="duckAnimation(); return false">
                             <img alt="duck" src="{% static 'images/duck.png' %}" class="img-responsive duck">
                         </a>
-                        <a href="#form" class="mobile_button">Написать о себе</a>
+                        <a href="{% url 'write_page' %}" class="mobile_button">Написать о себе</a>
                     </div>
 
                     <div class="collapse navbar-collapse" id="nav_target">
