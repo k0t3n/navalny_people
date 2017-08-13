@@ -93,7 +93,10 @@ class LikePersonView(ListView):
         user = self.request.user
         person_id = self.request.GET.get('id')
         person = Person.objects.filter(pk=person_id).last()
-        user.likes.add(person)
+        if person in user.likes.all():
+            user.likes.remove(person)
+        else:
+            user.likes.add(person)
         return HttpResponseRedirect(
             reverse('main_page')
         )
