@@ -46,7 +46,7 @@ class Person(AbstractBaseUser, PermissionsMixin):
         choices=SOCIAL_TYPE,
         verbose_name='тип социальной сети'
     )
-    location = models.ForeignKey(
+    address = models.ForeignKey(
         'geodata.GeoCoding',
         related_name='person_geodata',
         verbose_name='геодата пользователя',
@@ -101,7 +101,7 @@ class Person(AbstractBaseUser, PermissionsMixin):
         return True
 
     def get_short_name(self):
-        return f'{self.first_name, self.last_name[0]}'
+        return '{} {}.'.format(self.first_name, self.last_name[0])
 
     def __str__(self):
         return self.get_short_name()

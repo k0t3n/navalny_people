@@ -5,7 +5,7 @@ from django.urls import reverse
 from django.views.generic import (
     ListView, DetailView, CreateView
 )
-from navalny_people.utils import decode_address_by_googlemaps
+from navalny_people.utils import decode_address_by_googlemaps, upload_to
 
 from navalny_people.models import Person
 
@@ -61,7 +61,7 @@ class MainPage(ListView):
 
     def get_queryset(self):
         return self.model.objects. \
-                   select_related('location').order_by('?')[:25]
+                   select_related('address').order_by('?')[:25]
 
     def get(self, request, *args, **kwargs):
         persons = self.get_queryset()
@@ -83,7 +83,7 @@ class AboutPage(ListView):
     active_menu = 'about'
 
     def get(self, request, *args, **kwargs):
-        return render(self.request, 'how_it_works.html', {'active': self.active_menu})
+        return render(self.request, 'how_it_works_page.html', {'active': self.active_menu})
 
 
 class DetailProfilePage(DetailView):
@@ -98,11 +98,11 @@ class DetailProfilePage(DetailView):
 
     def get(self, request, *args, **kwargs):
         person_id = kwargs['pk']
-        if not self.queryset.filter(pk=person_id).exists():
+        if not Person.objects.filter(id=person_id):
             return HttpResponseRedirect(
                 reverse('404')
             )
-        person = self.get_queryset().get(pk=person_id)
+        person = Person.objects.get(id=person_id)
         context = {
             'person': person
         }
@@ -110,7 +110,6 @@ class DetailProfilePage(DetailView):
 
 
 class WriteAboutMe(ListView, CreateView):
-    model = Person
     paginator_class = None
 
     def get(self, request, *args, **kwargs):
@@ -120,14 +119,16 @@ class WriteAboutMe(ListView, CreateView):
         context = {}
         for key, value in self.request.POST.items():
             if key != '' or value is not None:
-                if key in ('location', 'first_name', 'last_name',
+                if key in ('address', 'first_name', 'last_name',
                            'profession', 'donated_money', 'email', 'story'):
                     context[key] = value
                 elif key in 'photo':
-                    context[key] = File(self.request.FILES.get(key))
-                elif key in 'location':
+                    context[key] = upload_to(None, File(self.request.FILES.get(key)))
+                elif key in 'address':
                     context[key] = decode_address_by_googlemaps(value)
-        person = self.model.objects.create(**context)
+        print(context)
+        person = Person(**context)
+        person.save()
         if len(context.keys()) == 0:
             return HttpResponseRedirect(
                 reverse('404')
