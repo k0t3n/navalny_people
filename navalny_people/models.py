@@ -82,6 +82,12 @@ class Person(AbstractBaseUser, PermissionsMixin):
         default=False,
         verbose_name='Проверен'
     )
+    likes = models.ManyToManyField(
+        'self',
+        related_name='likes_person',
+        related_query_name='likes_person_rel',
+        blank=True, null=True
+    )
 
     REQUIRED_FIELDS = ['last_name', 'first_name']
     USERNAME_FIELD = 'email'

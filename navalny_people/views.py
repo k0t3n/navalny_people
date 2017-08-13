@@ -1,7 +1,9 @@
 from django.contrib import auth
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.urls import reverse
+from django.utils.decorators import method_decorator
 from django.views.generic import (
     ListView, DetailView, CreateView
 )
@@ -9,7 +11,7 @@ from navalny_people.models import Person
 from navalny_people.utils import decode_address_by_googlemaps, GeoCodeResponse
 
 
-class Login(CreateView):
+class Login(ListView):
 
     def get(self, request, *args, **kwargs):
         pass
@@ -81,6 +83,20 @@ class MainPage(ListView):
             'active': self.active_menu
         }
         return render(self.request, 'main_page.html', context=context)
+
+
+class LikePersonView(ListView):
+    model = Person
+
+    @method_decorator(login_required)
+    def get(self, request, *args, **kwargs):
+        user = self.request.user
+        person_id = self.request.GET.get('id')
+        person = Person.objects.filter(pk=person_id).last()
+        user.likes.add(person)
+        return HttpResponseRedirect(
+            reverse('main_page')
+        )
 
 
 class AboutPage(ListView):
