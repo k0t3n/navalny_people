@@ -591,9 +591,19 @@ body {
 
 /* MAIN PAGE TOP START */
 
-.top_people-header {
-    height: 148px;
-    background: #999999;
+.top_page-header {
+    margin: 0 0 50px 0;
+    color: black;
+    text-align: center;
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+.top_page-header p {
+    font-family: Exo2, 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    color: #999999;
 }
 
 .top_people {
@@ -786,8 +796,7 @@ body {
         max-width: 300px;
     }
 
-    .top_people,
-    .top_people-header {
+    .top_people {
         display: none;
     }
 }
