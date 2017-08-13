@@ -121,7 +121,7 @@ class MainPage(ListView):
                 top10.avatar = top10.preview.url
             top10.score = t
             top10.location = GeoCodeResponse(top10.pk, '', ['political_town'])
-            if t >= 5:
+            if len(tops10) >= 5:
                 tops5left.append(tops10)
             else:
                 tops5rights.append(tops10)
