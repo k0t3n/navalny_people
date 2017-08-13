@@ -625,7 +625,7 @@ body {
 .person-photo {
     border-right: 1px solid rgba(0, 0, 0, 0.10);
     border-left: 1px solid rgba(0, 0, 0, 0.10);
-    padding-top: 10px;
+    padding: 10px;
 }
 
 .person-photo img {
