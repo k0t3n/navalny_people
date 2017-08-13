@@ -109,7 +109,17 @@ class MainPage(ListView):
             else:
                 person.avatar = person.preview.url
             person.position = self.positions[i]
+        tops10 = self.model.objects.prefetch_related('likes').\
+            order_by('likes').all()
+        for t, top10 in enumerate(tops10):
+            if 'http' in top10.photo.path:
+                top10.avatar = 'https://' + top10.photo.path[33:]
+            else:
+                top10.avatar = top10.preview.url
+            top10.score = t
+            top10.location = GeoCodeResponse(top10.pk, '', ['political_town'])
         context = {
+            'tops10': tops10,
             'persons': persons,
             'active': self.active_menu
         }

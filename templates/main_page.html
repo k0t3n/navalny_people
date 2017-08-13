@@ -9,8 +9,8 @@
     <!-- Scroller start -->
 
     <div class="background_text">
-            <p>Своей историей уже</p>
-            <h2>Поделились</h2>
+        <p>Своей историей уже</p>
+        <h2>Поделились</h2>
     </div>
 
     <div class="scroller_wrapper">
@@ -18,28 +18,29 @@
             {% for person in persons %}
                 <a href="{% url 'detail_person' person.pk %}"
                    class="animation-{{ person.position }}">
-                    <img src="{{ person.avatar }}"  width="100px" height="100px"/>
+                    <img src="{{ person.avatar }}" width="100px"
+                         height="100px"/>
                 </a>
             {% endfor %}
         </div>
         <div class="wrapper">
             <div class="counter container-fluid">
-                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2">
-                        <h2><span class="count">769</span></h2>
-                        <p>Знаменитостей</p>
-                    </div>
-                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                        <h2><span class="count">42</span> мл.</h2>
-                        <p>Пожертвовано</p>
-                    </div>
-                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                        <h2><span class="count">571</span> тыс.</h2>
-                        <p>Волонтеров</p>
-                    </div>
-                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                        <h2><span class="count">82</span> тыс.</h2>
-                        <p>Уникальных историй</p>
-                    </div>
+                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2">
+                    <h2><span class="count">769</span></h2>
+                    <p>Знаменитостей</p>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                    <h2><span class="count">42</span> мл.</h2>
+                    <p>Пожертвовано</p>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                    <h2><span class="count">571</span> тыс.</h2>
+                    <p>Волонтеров</p>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                    <h2><span class="count">82</span> тыс.</h2>
+                    <p>Уникальных историй</p>
+                </div>
             </div>
         </div>
     </div>
@@ -51,152 +52,29 @@
         </div>
         <div class="top_people">
             <div class="left-side">
-                <div class="top_people-person">
-                    <div class="place">
-                        <div>
-                            <h1>1</h1>
+                {% for top10 in tops10 %}
+                    <div class="top_people-person">
+                        <div class="place">
+                            <div>
+                                <h1>{{ top10.score }}</h1>
+                            </div>
+                        </div>
+                        <div class="person-photo">
+                            <img src="{{ top10.avatar }}" width="100"
+                                 height="100" alt="photo">
+                        </div>
+                        <div class="person-info">
+                            <h3>{{ top10.first_name }}
+                                {{ top10.last_name }}</h3>
+                            <p>{{ top10.location }}, {{ top10.profession }}</p>
                         </div>
                     </div>
-                    <div class="person-photo">
-                        <img src="../static/images/duck.png" width="100" height="100" alt="photo">
-                    </div>
-                    <div class="person-info">
-                        <h3>Алексей Катенка</h3>
-                        <p>Санкт-Петербург, программист</p>
-                    </div>
-                </div>
-                <div class="top_people-person">
-                    <div class="place">
-                        <div>
-                            <h1>2</h1>
-                        </div>
-                    </div>
-                    <div class="person-photo">
-                        <img src="../static/images/duck.png" width="100" height="100" alt="photo">
-                    </div>
-                    <div class="person-info">
-                        <h3>Дмитрий Мотвенко</h3>
-                        <p>Санкт-Петербург, программист</p>
-                    </div>
-                </div>
-                <div class="top_people-person">
-                    <div class="place">
-                        <div>
-                            <h1>3</h1>
-                        </div>
-                    </div>
-                    <div class="person-photo">
-                        <img src="../static/images/duck.png" width="100" height="100" alt="photo">
-                    </div>
-                    <div class="person-info">
-                        <h3>Алексей Катенка</h3>
-                        <p>Санкт-Петербург, программист</p>
-                    </div>
-                </div>
-                <div class="top_people-person">
-                    <div class="place">
-                        <div>
-                            <h1>4</h1>
-                        </div>
-                    </div>
-                    <div class="person-photo">
-                        <img src="../static/images/duck.png" width="100" height="100" alt="photo">
-                    </div>
-                    <div class="person-info">
-                        <h3>Алексей Катенка</h3>
-                        <p>Санкт-Петербург, программист</p>
-                    </div>
-                </div>
-                <div class="top_people-person">
-                    <div class="place">
-                        <div>
-                            <h1>5</h1>
-                        </div>
-                    </div>
-                    <div class="person-photo">
-                        <img src="../static/images/duck.png" width="100" height="100" alt="photo">
-                    </div>
-                    <div class="person-info">
-                        <h3>Алексей Катенка</h3>
-                        <p>Санкт-Петербург, программист</p>
-                    </div>
-                </div>
-            </div>
-            <div class="right-side">
-                <div class="top_people-person">
-                    <div class="place">
-                        <div>
-                            <h1>6</h1>
-                        </div>
-                    </div>
-                    <div class="person-photo">
-                        <img src="../static/images/duck.png" width="100" height="100" alt="photo">
-                    </div>
-                    <div class="person-info">
-                        <h3>Алексей Катенка</h3>
-                        <p>Санкт-Петербург, программист</p>
-                    </div>
-                </div>
-                <div class="top_people-person">
-                    <div class="place">
-                        <div>
-                            <h1>7</h1>
-                        </div>
-                    </div>
-                    <div class="person-photo">
-                        <img src="../static/images/duck.png" width="100" height="100" alt="photo">
-                    </div>
-                    <div class="person-info">
-                        <h3>Алексей Катенка</h3>
-                        <p>Санкт-Петербург, программист</p>
-                    </div>
-                </div>
-                <div class="top_people-person">
-                    <div class="place">
-                        <div>
-                            <h1>8</h1>
-                        </div>
-                    </div>
-                    <div class="person-photo">
-                        <img src="../static/images/duck.png" width="100" height="100" alt="photo">
-                    </div>
-                    <div class="person-info">
-                        <h3>Алексей Катенка</h3>
-                        <p>Санкт-Петербург, программист</p>
-                    </div>
-                </div>
-                <div class="top_people-person">
-                    <div class="place">
-                        <div>
-                            <h1>9</h1>
-                        </div>
-                    </div>
-                    <div class="person-photo">
-                        <img src="../static/images/duck.png" width="100" height="100" alt="photo">
-                    </div>
-                    <div class="person-info">
-                        <h3>Алексей Катенка</h3>
-                        <p>Санкт-Петербург, программист</p>
-                    </div>
-                </div>
-                <div class="top_people-person">
-                    <div class="place">
-                        <div>
-                            <h1>10</h1>
-                        </div>
-                    </div>
-                    <div class="person-photo">
-                        <img src="../static/images/duck.png" width="100" height="100" alt="photo">
-                    </div>
-                    <div class="person-info">
-                        <h3>Алексей Катенка</h3>
-                        <p>Санкт-Петербург, программист</p>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
 
     <!-- Scroller end -->
 {% endblock %}
-{% block custom_js %}<script src="{% static 'js/animation.js' %}"></script>{% endblock %}
+{% block custom_js %}
+    <script src="{% static 'js/animation.js' %}"></script>{% endblock %}
