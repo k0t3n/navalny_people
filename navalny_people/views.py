@@ -23,7 +23,7 @@ class Login(ListView):
         if first_name and last_name and uid:  # проверяем, всё ли параметры к нам пришли
             user = auth.authenticate(uid=uid, password=user_hash)  # если да, то пытаемся авторизоваться
             if user is not None:
-                auth.login(request, user)
+                auth.login(self.request, user)
                 return HttpResponseRedirect(
                     reverse('main_page')
                 )
@@ -36,7 +36,7 @@ class Login(ListView):
                     password=user_hash,
                     photo=photo,
                 )
-                auth.login(request, reg_user)
+                auth.login(self.request, reg_user)
                 return HttpResponseRedirect(
                     reverse('main_page')
                 )
