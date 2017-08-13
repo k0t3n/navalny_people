@@ -1,6 +1,7 @@
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import AnonymousUser
+from django.db.models import Count
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.urls import reverse
@@ -110,7 +111,8 @@ class MainPage(ListView):
                 person.avatar = person.preview.url
             person.position = self.positions[i]
         tops10 = self.model.objects.prefetch_related('likes').\
-            order_by('likes').all()
+            annotate(likes_cnt=Count('likes')).order_by('likes_cnt').all()
+        tops5left, tops5rights = [], []
         for t, top10 in enumerate(tops10):
             t += 1
             if 'http' in top10.photo.path:
@@ -119,8 +121,13 @@ class MainPage(ListView):
                 top10.avatar = top10.preview.url
             top10.score = t
             top10.location = GeoCodeResponse(top10.pk, '', ['political_town'])
+            if t >= 5:
+                tops5left.append(tops10)
+            else:
+                tops5rights.append(tops10)
         context = {
-            'tops10': tops10,
+            'tops5left': tops5left,
+            'tops5rights': tops5rights,
             'persons': persons,
             'active': self.active_menu
         }

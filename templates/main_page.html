@@ -52,7 +52,7 @@
         </div>
         <div class="top_people">
             <div class="left-side">
-                {% for top10 in tops10 %}
+                {% for top10 in tops5left %}
                     <div class="top_people-person">
                         <div class="place">
                             <div>
@@ -66,7 +66,36 @@
                         <div class="person-info">
                             <a href="{% url 'detail_person' top10.pk %}">
                                 <h3>{{ top10.first_name }}
-                                {{ top10.last_name }}</h3>
+                                    {{ top10.last_name }}</h3>
+                            </a>
+                            <p>
+                                {% if top10.profession %}
+                                    {{ top10.profession }},
+                                {% endif %}
+                                {% if top10.location %}
+                                    г. {{ top10.location }}
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="right-side">
+                {% for top10 in tops5rights %}
+                    <div class="top_people-person">
+                        <div class="place">
+                            <div>
+                                <h1>{{ top10.score }}</h1>
+                            </div>
+                        </div>
+                        <div class="person-photo">
+                            <img src="{{ top10.avatar }}" width="100"
+                                 height="100" alt="photo">
+                        </div>
+                        <div class="person-info">
+                            <a href="{% url 'detail_person' top10.pk %}">
+                                <h3>{{ top10.first_name }}
+                                    {{ top10.last_name }}</h3>
                             </a>
                             <p>
                                 {% if top10.profession %}
