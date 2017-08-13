@@ -61,7 +61,7 @@ class MainPage(ListView):
 
     def get_queryset(self):
         return self.model.objects. \
-                   select_related('location').order_by('?')[:25]
+                   select_related('address').order_by('?')[:25]
 
     def get(self, request, *args, **kwargs):
         persons = self.get_queryset()
@@ -120,14 +120,16 @@ class WriteAboutMe(ListView, CreateView):
         context = {}
         for key, value in self.request.POST.items():
             if key != '' or value is not None:
-                if key in ('location', 'first_name', 'last_name',
+                if key in ('address', 'first_name', 'last_name',
                            'profession', 'donated_money', 'email', 'story'):
                     context[key] = value
                 elif key in 'photo':
                     context[key] = File(self.request.FILES.get(key))
-                elif key in 'location':
+                elif key in 'address':
                     context[key] = decode_address_by_googlemaps(value)
-        person = self.model.objects.create(**context)
+        print(context)
+        person = Person(**context)
+        person.save()
         if len(context.keys()) == 0:
             return HttpResponseRedirect(
                 reverse('404')

@@ -46,7 +46,7 @@ class Person(AbstractBaseUser, PermissionsMixin):
         choices=SOCIAL_TYPE,
         verbose_name='тип социальной сети'
     )
-    location = models.ForeignKey(
+    address = models.ForeignKey(
         'geodata.GeoCoding',
         related_name='person_geodata',
         verbose_name='геодата пользователя',
