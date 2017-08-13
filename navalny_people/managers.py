@@ -4,16 +4,17 @@ from django.utils import timezone
 
 class PeopleManager(BaseUserManager):
 
-    def create_person(self, first_name, last_name, email=None, uid=None,
+    def create_person(self, first_name, last_name, photo=None, email=None, uid=None,
                       social_type=None, story=None, password=None):
         data = {
+            'photo': photo,
             'email': email,
             'uid': uid,
             'social_type': social_type,
             'first_name': first_name,
             'date_register': timezone.now(),
             'last_name': last_name,
-            'password': password
+            'password': password,
         }
         data.update({'story': story}) if story is not None else False
         person = self.model.objects.create(**data)
