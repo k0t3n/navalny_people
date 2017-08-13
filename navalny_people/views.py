@@ -98,11 +98,11 @@ class DetailProfilePage(DetailView):
 
     def get(self, request, *args, **kwargs):
         person_id = kwargs['pk']
-        if not self.queryset.filter(pk=person_id).exists():
+        if not Person.objects.filter(id=person_id):
             return HttpResponseRedirect(
                 reverse('404')
             )
-        person = self.get_queryset().get(pk=person_id)
+        person = Person.objects.get(id=person_id)
         context = {
             'person': person
         }
