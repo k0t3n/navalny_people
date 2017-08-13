@@ -10,7 +10,8 @@ class PeopleManager(BaseUserManager):
             'photo': photo,
             'email': email,
             'uid': uid,
-            'social_type': social_type,
+            'social_type': self.model.VK
+            if social_type is None else social_type,
             'first_name': first_name,
             'date_register': timezone.now(),
             'last_name': last_name,
@@ -25,8 +26,8 @@ class PeopleManager(BaseUserManager):
         person.save(update_fields=['password'])
         return person
 
-    def create_superuser(self, email, first_name, last_name, password):
-        person = self.create_person(email=email, first_name=first_name,
+    def create_superuser(self, uid, first_name, last_name, password):
+        person = self.create_person(uid=uid, first_name=first_name,
                                     last_name=last_name, password=password)
         person.is_superuser = True
         person.set_password(password)
