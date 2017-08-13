@@ -111,7 +111,7 @@ class MainPage(ListView):
                 person.avatar = person.preview.url
             person.position = self.positions[i]
         tops10 = self.model.objects.prefetch_related('likes').\
-            annotate(likes_cnt=Count('likes')).order_by('?').all()
+            order_by('?').all()
         tops5left, tops5rights = [], []
         for t, top10 in enumerate(tops10):
             t += 1
