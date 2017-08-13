@@ -46,7 +46,7 @@ urlpatterns = [
         ])
     ),
     url(
-        r'^login/$',
+        r'^login/',
         Login.as_view(),
         name='login'
     ),

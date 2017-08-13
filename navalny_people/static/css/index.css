@@ -1006,4 +1006,8 @@ body {
 
 .close:hover { background: #00d9ff; }
 
+#vk_auth {
+    margin: 0 auto;
+}
+
 /* MODAL END */
