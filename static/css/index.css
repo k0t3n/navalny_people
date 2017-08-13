@@ -55,7 +55,7 @@ body {
 .navbar-brand .logo {
     position: relative;
     top: 30px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
     z-index: 2;
 }
 
@@ -200,7 +200,7 @@ body {
 .form-header {
     z-index: 1;
     position: relative;
-    top: 50px;
+    top: 150px;
     color: black;
     text-align: center;
     text-transform: uppercase;
@@ -224,7 +224,7 @@ body {
     height: 575px;
     background: url('../images/form_background.jpg') no-repeat center;
     padding: 40px 4px 0 4px;
-    margin: 0 auto 118px auto;
+    margin: 100px auto 118px auto;
     max-width: 770px;
 }
 
@@ -332,7 +332,7 @@ body {
 }
 
 .how_it_works-header {
-    margin-bottom: 60px;
+    margin: 180px 0 50px 0;
     color: black;
     text-align: center;
     font-size: 24px;
@@ -400,7 +400,6 @@ body {
 
 .people_list img {
     border-radius: 100%;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 .item-image {
@@ -429,7 +428,7 @@ body {
 }
 
 .people_list-item {
-    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.10);
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -463,6 +462,127 @@ body {
     margin: 10px;
 }
 /* PEOPLE_LIST END */
+
+/* STORY START */
+
+.story {
+    margin-top: 150px;
+    box-shadow: 0 2px 10px rgba(117, 117, 117, 0.1);
+}
+
+.story img {
+    border-radius: 100%;
+}
+
+/* STORY END */
+
+/* 404 START */
+
+.page_not_found {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+}
+
+.page_not_found a {
+    box-sizing: border-box;
+    padding: 12px 20px;
+    border: 1px solid #0d7fa3;
+    border-radius: 3px;
+}
+
+.page_not_found a:hover {
+    color: #fff;
+    background: #0d7fa3;
+    text-decoration: none;
+}
+
+.page_not_found a:focus {
+    text-decoration: none;
+}
+
+.page_not_found a:visited {
+    text-decoration: none;
+}
+
+/* 404 END */
+
+/* DETAIL_PEOPLE PAGE START */
+
+/*TODO: XS ADAPTATION*/
+
+.background_blue {
+    background: url('../images/background_blue.png') no-repeat;
+}
+
+.profile_container {
+    position: relative;
+    top: -180px;
+    /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.10);*/
+    /*padding-bottom: 70px;*/
+}
+
+.shadow-container {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.10);
+    background: #fff;
+}
+
+.profile_header-text h2 {
+    font-family: Activist, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 55px;
+    color: #fff;
+    margin-bottom: 0;
+}
+
+.profile_header-text p {
+    font-family: Exo2, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.60);
+    text-indent: 30px;
+}
+
+.profile_img_link > div > img {
+    position: relative;
+    top: -50px;
+    border-radius: 100%;
+}
+
+.social_icons-container {
+    padding: 30px 0 0 70px;
+}
+
+.social_icons-container > div {
+    height: inherit;
+}
+
+.social_icons-container > div > img {
+    margin-right: 10px;
+}
+
+.like_share-container {
+    padding: 30px 0 0 70px;
+}
+
+.like_share-container > div > img:first-child {
+    margin-right: 30px;
+}
+
+.profile_story {
+    padding: 20px 20px 70px 20px;
+    font-family: Exo2, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #999999;
+    font-size: 16px;
+    text-indent: 30px;
+}
+
+/* DETAIL_PEOPLE PAGE END */
 
 /* MEDIA START */
 
@@ -528,10 +648,6 @@ body {
     .flex-3 {
         text-align: end;
         min-width: 100%;
-    }
-
-    .flex-3 {
-
     }
 }
 

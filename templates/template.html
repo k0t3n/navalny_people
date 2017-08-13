@@ -1,5 +1,4 @@
 {% load staticfiles %}
-{% load static %}
 
 <!DOCTYPE html>
 <html lang="ru">
@@ -53,13 +52,11 @@
                         <ul class="nav navbar-nav">
                             <li {% if active == 'main' %}class="active_link"{% endif %}><a href="{% url 'main_page' %}">Главная</a></li>
                             <li {% if active == 'people' %}class="active_link"{% endif %}><a href="{% url 'people_page' %}">Люди</a></li>
-                            <li {% if active == 'top' %}class="active_link"{% endif %}><a href="#">Топ</a></li>
-                            <li><a href="#how_it_works">Как это работает</a></li>
-                            <li {% if active == 'about' %}class="active_link"{% endif %}><a href="#">О нас</a></li>
+                            <li {% if active == 'about' %}class="active_link"{% endif %}><a href="{% url 'about_page' %}">Как это работает</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li>
-                                <a href="#form" class="header_button">
+                                <a href="{% url 'write_page' %}" class="header_button">
                                     Написать о себе
                                 </a>
                             </li>
@@ -73,20 +70,17 @@
 </header>
 
 <main>
-    <div class="background_wrapper"></div>
     {% block content %}{% endblock %}
 </main>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Third-party scripts -->
-<script src="{% static 'js/jQueryRotate.js' %}"></script>
-<script src="{% static 'js/autocomplete.js' %}"></script>
 <script src="{% static 'js/addFile.js' %}"></script>
 <script src="{% static 'js/helpContainer.js' %}"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCi3dmQDG8mz6Mb6w1FzVXk-OvYfUvZE04&libraries=places&callback=initAutocomplete" async defer></script>
-<!-- Aniations and scroll -->
-<script src="{% static 'js/animation.js' %}"></script>
+<script src="{% static 'js/jQueryRotate.js' %}"></script>
+<!-- Google -->
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
+{% block custom_js %}{% endblock %}
 </body>
 </html>

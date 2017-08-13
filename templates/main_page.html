@@ -1,9 +1,11 @@
 {% extends 'template.html' %}
+{% load staticfiles %}
 
 {% block title %}Навальный Люди{% endblock %}
 
 {% block content %}
 
+    <div class="background_wrapper"></div>
     <!-- Scroller start -->
 
     <div class="background_text">
@@ -23,19 +25,19 @@
         <div class="wrapper">
             <div class="counter container-fluid">
                     <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2">
-                        <h2>769</h2>
+                        <h2><span class="count">769</span></h2>
                         <p>Знаменитостей</p>
                     </div>
                     <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                        <h2>42 мл.</h2>
+                        <h2><span class="count">42</span> мл.</h2>
                         <p>Пожертвовано</p>
                     </div>
                     <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                        <h2>571 тыс.</h2>
+                        <h2><span class="count">571</span> тыс.</h2>
                         <p>Волонтеров</p>
                     </div>
                     <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                        <h2>82 тыс.</h2>
+                        <h2><span class="count">82</span> тыс.</h2>
                         <p>Уникальных историй</p>
                     </div>
             </div>
@@ -43,125 +45,5 @@
     </div>
 
     <!-- Scroller end -->
-
-    <!-- Form start -->
-    <div class="wrapper" id="form">
-    <div class="form-header">
-                <h2>Поделись</h2>
-                <p>Своей историей с другими</p>
-            </div>
-        <div class="form container-fluid">
-            <form action="">
-                <div class="row">
-                    <div class="form-group col-lg-10 col-md-10 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1">
-                        <input class="form-control" id="region" placeholder="Регион" required>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="form-group col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                        <input class="form-control" id="second_name" placeholder="Фамилия" required>
-                    </div>
-                    <div class="form-group col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                        <input class="form-control" id="first_name" placeholder="Имя" required>
-                    </div>
-                    <div class="form-group col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                        <input type="number" class="form-control" id="birthday" placeholder="Сколько вам лет?">
-                    </div>
-
-                </div>
-
-                <div class="row">
-                    <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <input type="number" class="form-control" id="donations"
-                               placeholder="Сумма ваших пожертвований">
-                    </div>
-                    <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <input type="email" class="form-control" id="email" placeholder="Email" required>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="help">
-                            <p>Все предельно просто, как раз, два, три. Расскажите вашу историю и ожидайте проверку
-                    модерацией.Все предельно просто, как раз, два, три. Расскажите вашу историю и ожидайте проверку
-                    модерацией.</p>
-                        </div>
-                        <div class="story-container">
-                            <textarea class="form-control" rows="5" id="story" placeholder="Постарайтесь кратко и ясно поделиться вашей историей" required></textarea>
-                            <span class="glyphicon glyphicon-question-sign" id="help_button"></span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3 input_file-container">
-                        <input type="file" class="form-control input_file" id="photo" required>
-                        <label for="photo" class="btn_tertiary js_labelFile">
-                            <span class="js_fileName">Выберите фото</span>
-                        </label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4 col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4">
-                        <input type="submit" class="form-control" placeholder="Отправить" id="submit">
-                    </div>
-                </div>
-
-            </form>
-        </div>
-    </div>
-    <!-- Form end -->
-
-    <!-- HowItWorks start -->
-    <div class="wrapper">
-        <div class="how_it_works" id="how_it_works">
-            <div class="how_it_works-header">
-                <h2>Как это работает?</h2>
-                <p>Все, что вы хотели бы знать, и даже больше</p>
-            </div>
-            <div class="how_it_works-item">
-                <a href="#" onclick="return false">Зачем это нужно и для чего?<span
-                        class="glyphicon glyphicon-chevron-down pull-right"></span></a>
-                <p>-Все предельно просто, как раз, два, три. Расскажите вашу историю и ожидайте проверку
-                    модерацией.</p>
-            </div>
-            <div class="how_it_works-item">
-                <a href="#" onclick="return false">Как попасть в раздел Знаменитых и что для этого нужно иметь?<span
-                        class="glyphicon glyphicon-chevron-down  pull-right"></span></a>
-                <p>-Все предельно просто, как раз, два, три. Расскажите вашу историю и ожидайте проверку
-                    модерацией.Все предельно просто, как раз, два, три. Расскажите вашу историю и ожидайте проверку
-                    модерацией.</p>
-            </div>
-            <div class="how_it_works-item">
-                <a href="#" onclick="return false">Как стать частью движения Навальный.Люди?<span
-                        class="glyphicon glyphicon-chevron-down  pull-right"></span></a>
-                <p>-Все предельно просто, как раз, два, три. Расскажите вашу историю и ожидайте проверку
-                    модерацией.Все предельно просто, как раз, два, три. Расскажите вашу историю и ожидайте проверку
-                    модерацией.Все предельно просто, как раз, два, три. Расскажите вашу историю и ожидайте проверку
-                    модерацией.Все предельно просто, как раз, два, три. Расскажите вашу историю и ожидайте проверку
-                    модерацией.</p>
-            </div>
-            <div class="how_it_works-item">
-                <a href="#" onclick="return false">Моя информация будет передена в ФСБ и другие гос.органы?<span
-                        class="glyphicon glyphicon-chevron-down  pull-right"></span></a>
-                <p>-Все предельно просто, как раз, два, три. Расскажите вашу историю и ожидайте проверку
-                    модерацией.</p>
-            </div>
-            <div class="how_it_works-item">
-                <a href="#" onclick="return false">Я гражданин другой страны, но поддерживаю действия Навального,
-                    что делать?<span
-                        class="glyphicon glyphicon-chevron-down  pull-right"></span></a>
-                <p>-Все предельно просто, как раз, два, три. Расскажите вашу историю и ожидайте проверку
-                    модерацией.Все предельно просто, как раз, два, три. Расскажите вашу историю и ожидайте проверку
-                    модерацией.Все предельно просто, как раз, два, три. Расскажите вашу историю и ожидайте проверку
-                    модерацией.Все предельно просто, как раз, два, три. Расскажите вашу историю и ожидайте проверку
-                    модерацией.Все предельно просто, как раз, два, три. Расскажите вашу историю и ожидайте проверку
-                    модерацией.Все предельно просто, как раз, два, три. Расскажите вашу историю и ожидайте проверку
-                    модерацией.</p>
-            </div>
-        </div>
-    </div>
-    <!-- HowItWorks end -->
 {% endblock %}
+{% block custom_js %}<script src="{% static 'js/animation.js' %}"></script>{% endblock %}
