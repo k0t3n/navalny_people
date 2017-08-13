@@ -64,8 +64,10 @@
                                  height="100" alt="photo">
                         </div>
                         <div class="person-info">
-                            <h3>{{ top10.first_name }}
+                            <a href="{% url 'detail_person' top10.pk %}">
+                                <h3>{{ top10.first_name }}
                                 {{ top10.last_name }}</h3>
+                            </a>
                             <p>
                                 {% if top10.profession %}
                                     {{ top10.profession }},
