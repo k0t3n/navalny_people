@@ -1,13 +1,11 @@
-from django.core.files import File
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.urls import reverse
 from django.views.generic import (
     ListView, DetailView, CreateView
 )
-from navalny_people.utils import decode_address_by_googlemaps, upload_to
-
 from navalny_people.models import Person
+from navalny_people.utils import decode_address_by_googlemaps, GeoCodeResponse
 
 
 def page_not_found(request):
@@ -92,17 +90,21 @@ class DetailProfilePage(DetailView):
     :param request:
     :return:
     """
+    model = Person
 
     def get_queryset(self):
         return self.model.objects.all()
 
     def get(self, request, *args, **kwargs):
         person_id = kwargs['pk']
-        if not Person.objects.filter(id=person_id):
+        if not self.get_queryset().filter(id=person_id):
             return HttpResponseRedirect(
                 reverse('404')
             )
-        person = Person.objects.get(id=person_id)
+        person = self.get_queryset().get(id=person_id)
+        person.town = GeoCodeResponse(
+            person, '', ['political_town']
+        )
         context = {
             'person': person
         }
@@ -122,13 +124,12 @@ class WriteAboutMe(ListView, CreateView):
                 if key in ('address', 'first_name', 'last_name',
                            'profession', 'donated_money', 'email', 'story'):
                     context[key] = value
-                elif key in 'photo':
-                    context[key] = upload_to(None, File(self.request.FILES.get(key)))
-                elif key in 'address':
-                    context[key] = decode_address_by_googlemaps(value)
-        print(context)
-        person = Person(**context)
-        person.save()
+                elif key in 'location':
+                    context['address'] = decode_address_by_googlemaps(value)
+        context['photo'] = self.request.FILES.get('photo')
+        person = Person.objects.create(**context)
+        person.set_unusable_password()
+        person.save(update_fields=['password'])
         if len(context.keys()) == 0:
             return HttpResponseRedirect(
                 reverse('404')

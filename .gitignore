@@ -15,6 +15,3 @@ __pycache__/
 .env_development
 core/settings_local.py
 /db.sqlite3
-navalny_people/migrations
-geodata/migrations
-files/
