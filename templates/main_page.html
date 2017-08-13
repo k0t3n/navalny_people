@@ -18,7 +18,7 @@
             {% for person in persons %}
                 <a href="{% url 'detail_person' person.pk %}"
                    class="animation-{{ person.position }}">
-                    <img src="{{ person.preview.url }}"  width="100px" height="100px"/>
+                    <img src="{{ person.avatar }}"  width="100px" height="100px"/>
                 </a>
             {% endfor %}
         </div>

@@ -103,6 +103,10 @@ class MainPage(ListView):
     def get(self, request, *args, **kwargs):
         persons = self.get_queryset()
         for i, person in enumerate(persons):
+            if 'http' in person.photo:
+                person.avatar = person.photo
+            else:
+                person.avatar = person.preview.url
             person.position = self.positions[i]
         context = {
             'persons': persons,
@@ -161,6 +165,10 @@ class DetailProfilePage(DetailView):
         person.town = GeoCodeResponse(
             person, '', ['political_town']
         )
+        if 'http' in person.photo:
+            person.avatar = person.photo
+        else:
+            person.avatar = person.preview.url
         context = {
             'person': person
         }
