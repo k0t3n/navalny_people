@@ -122,13 +122,12 @@ class WriteAboutMe(ListView, CreateView):
                 if key in ('address', 'first_name', 'last_name',
                            'profession', 'donated_money', 'email', 'story'):
                     context[key] = value
-                elif key in 'photo':
-                    context[key] = upload_to(None, File(self.request.FILES.get(key)))
-                elif key in 'address':
-                    context[key] = decode_address_by_googlemaps(value)
-        print(context)
-        person = Person(**context)
-        person.save()
+                elif key in 'location':
+                    context['address'] = decode_address_by_googlemaps(value)
+        context['photo'] = self.request.FILES.get('photo')
+        person = Person.objects.create(**context)
+        person.set_unusable_password()
+        person.save(update_fields=['password'])
         if len(context.keys()) == 0:
             return HttpResponseRedirect(
                 reverse('404')

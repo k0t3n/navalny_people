@@ -1,10 +1,9 @@
 import json
 import os
-import urllib
 import uuid
 from collections import namedtuple
-
 from datetime import datetime
+
 from django.conf import settings
 
 from geodata.models import TransGeoData, GeoCoding
@@ -16,7 +15,7 @@ def upload_to(instance, filename):
     @string: app_name/model_name/4_uuid4_symbols/uuid4.ext
     """
     ext = filename.split('.')[-1]
-    filename = '%s.%s' % (uuid.uuid4(), ext)
+    filename = '%s.%s' % (str(uuid.uuid4()), ext)
     basedir = os.path.join(instance._meta.app_label,
                            instance.__class__.__name__.lower())
     return os.path.join(basedir, filename[:4], filename)
